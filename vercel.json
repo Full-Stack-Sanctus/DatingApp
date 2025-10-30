@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "cd apps/web/datingapp-web && npm install && npm run build",
+  "buildCommand": "npm install && npm run build --prefix apps/web/datingapp-web",
   "outputDirectory": "apps/web/datingapp-web/dist",
   "framework": "vite",
   "env": {
