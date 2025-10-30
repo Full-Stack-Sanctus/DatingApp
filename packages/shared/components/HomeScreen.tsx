@@ -1,5 +1,5 @@
 // shared/components/HomeScreen.tsx
-import React from 'react';
+// import React from 'react';
 import { Text, View, Platform, StyleSheet } from 'react-native';
 
 export default function HomeScreen() {
