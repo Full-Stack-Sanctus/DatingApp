@@ -35,6 +35,8 @@ jobs:
         run: eas whoami || eas login --token $EXPO_TOKEN
 
       - name: 🏗️ Build Android app
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
         run: |
           eas build --platform android --profile production --non-interactive
         working-directory: ${{ env.APP_DIR }}
