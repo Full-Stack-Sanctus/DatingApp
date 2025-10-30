@@ -3,12 +3,13 @@
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
-  ],
+  ]
   "compilerOptions": {
     "baseUrl": ".",
     "types": ["node"],
     "paths": {
-      "@shared/*": ["packages/shared/components/*"]
+      "@shared/*": ["../../../packages/shared/*"]
     }
-  }
+  },
+  "include": ["src"]
 }
