@@ -13,6 +13,7 @@ export default defineConfig({
     alias: {
       '@': resolve(__dirname, 'src'),
       'shared': resolve(__dirname, '../../../packages/shared'),
+      'react-native': 'react-native-web'
     },
   },
 });
