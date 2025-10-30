@@ -10,6 +10,5 @@
     "paths": {
       "@shared/*": ["../../../packages/shared/*"]
     }
-  },
-  "include": ["src"]
+  }
 }
