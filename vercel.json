@@ -1,11 +1,5 @@
 {
   "version": 2,
-  "projects": {
-    "web": {
-      "source": "apps/web/datingapp-web",
-      "framework": "vite"
-    }
-  },
   "builds": [
     {
       "src": "apps/web/datingapp-web/package.json",
