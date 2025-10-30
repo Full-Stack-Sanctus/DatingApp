@@ -3,7 +3,7 @@
   "slug": "datingapp-mobile",
   "version": "1.0.0",
     "android": {
-      "package": "com.example.datingapp-mobile"
+      "package": "com.example.datingapp"
     },
   "extra": {
     "eas": {
