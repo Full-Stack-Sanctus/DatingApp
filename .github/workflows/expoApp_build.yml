@@ -9,6 +9,10 @@ on:
 jobs:
   build-android:
     runs-on: ubuntu-latest
+    
+    env:
+      APP_DIR: apps/mobile/datingapp-mobile
+      
     steps:
       - name: 🛎️ Checkout repository
         uses: actions/checkout@v4
@@ -21,9 +25,9 @@ jobs:
 
       - name: 📦 Install dependencies
         run: |
-          cd apps/mobile/datingapp-moblie
           npm install -g eas-cli
           npm install
+        working-directory: ${{ env.APP_DIR }}
 
       - name: 🔐 Authenticate with Expo
         env:
@@ -32,8 +36,8 @@ jobs:
 
       - name: 🏗️ Build Android app
         run: |
-          cd apps/mobile/datingapp-moblie
           eas build --platform android --profile production --non-interactive
+        working-directory: ${{ env.APP_DIR }}
 
       - name: 📦 Upload build artifacts
         uses: actions/upload-artifact@v4
