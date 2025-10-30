@@ -1,9 +1,15 @@
 {
   "version": 2,
-  "buildCommand": "npm install && npm run build --prefix apps/web/datingapp-web",
-  "outputDirectory": "apps/web/datingapp-web/dist",
-  "framework": "vite",
+  "builds": [
+    {
+      "src": "apps/web/datingapp-web/package.json",
+      "use": "@vercel/vite"
+    }
+  ],
   "env": {
     "NODE_ENV": "production"
-  }
+  },
+  "buildCommand": "ls && npm install && npm run build",
+  "outputDirectory": "apps/web/datingapp-web/.vite"
 }
+
