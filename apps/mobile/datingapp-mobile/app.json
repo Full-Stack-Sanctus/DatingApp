@@ -1,4 +1,9 @@
 {
   "name": "datingapp-mobile",
-  "slug": "datingapp-mobile"
+  "slug": "datingapp-mobile",
+  "extra": {
+    "eas": {
+      "projectId": "fbb0e59c-781c-4a07-ad42-d4b4682d0f5f"
+    }
+  }
 }
