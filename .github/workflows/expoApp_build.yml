@@ -31,16 +31,16 @@ jobs:
     
       - name: Restore Keystore from secret
         run: |
-          echo "$KEYSTORE_BASE64" | base64 --decode > keystore.jks
+          mkdir -p apps/mobile/datingapp-mobile
+          echo "$KEYSTORE_BASE64" | base64 --decode > apps/mobile/datingapp-mobile/keystore.jks
     
       - name: Create credentials.json
         run: |
-          mkdir -p apps/mobile/datingapp-mobile
           cat <<EOF > apps/mobile/datingapp-mobile/credentials.json
           {
             "android": {
               "keystore": {
-                "keystorePath": "./keystore.jks",
+                "keystorePath": "apps/mobile/datingapp-mobile/keystore.jks",
                 "keystorePassword": "${{secrets.KEYSTORE_PASSWORD}}",
                 "keyAlias": "${{secrets.KEY_ALIAS}}",
                 "keyPassword": "${{secrets.KEY_PASSWORD}}"
