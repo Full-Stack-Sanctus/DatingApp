@@ -28,6 +28,25 @@ jobs:
           npm install -g eas-cli
           npm install
         working-directory: ${{ env.APP_DIR }}
+    
+      - name: Restore Keystore from secret
+        run: |
+          echo "$KEYSTORE_BASE64" | base64 --decode > keystore.jks
+
+      - name: Create credentials.json
+        run: |
+          cat > credentials.json <<EOF
+          {
+            "android": {
+              "keystore": {
+                "keystorePath": "./keystore.jks",
+                "keystorePassword": "${KEYSTORE_PASSWORD}",
+                "keyAlias": "${KEY_ALIAS}",
+                "keyPassword": "${KEY_PASSWORD}"
+              }
+            }
+          }
+          EOF
 
       - name: 🔐 Authenticate with Expo
         env:
@@ -49,3 +68,5 @@ jobs:
             apps/mobile/datingapp-moblie/dist/**/*.apk
             apps/mobile/datingapp-moblie/dist/**/*.aab
             apps/mobile/datingapp-moblie/dist/**/*.tar.gz
+            
+            
