@@ -28,6 +28,7 @@ jobs:
         run: |
           npm install -g eas-cli
           npm install
+          npx expo install react react-native
     
       - name: Restore Keystore from secret
         working-directory: apps/mobile/datingapp-mobile
