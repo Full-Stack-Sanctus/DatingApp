@@ -24,10 +24,10 @@ jobs:
           cache: 'npm'
 
       - name: 📦 Install dependencies
+        working-directory: ${{ env.APP_DIR }}
         run: |
           npm install -g eas-cli
           npm install
-        working-directory: ${{ env.APP_DIR }}
     
       - name: Restore Keystore from secret
         working-directory: apps/mobile/datingapp-mobile
@@ -56,12 +56,12 @@ jobs:
         run: eas whoami || eas login --token $EXPO_TOKEN
 
       - name: 🏗️ Build Android app
+        working-directory: ${{ env.APP_DIR }}
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
         run: |
           eas build --platform android --profile production --non-interactive
-        working-directory: ${{ env.APP_DIR }}
-
+   
       - name: 📦 Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
