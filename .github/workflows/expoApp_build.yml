@@ -41,9 +41,9 @@ jobs:
             "android": {
               "keystore": {
                 "keystorePath": "./keystore.jks",
-                "keystorePassword": "${secrets.KEYSTORE_PASSWORD}",
-                "keyAlias": "${secrets.KEY_ALIAS}",
-                "keyPassword": "${secrets.KEY_PASSWORD}"
+                "keystorePassword": "${{secrets.KEYSTORE_PASSWORD}}",
+                "keyAlias": "${{secrets.KEY_ALIAS}}",
+                "keyPassword": "${{secrets.KEY_PASSWORD}}"
               }
             }
           }
