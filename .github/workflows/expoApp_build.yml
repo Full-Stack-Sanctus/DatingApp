@@ -30,8 +30,9 @@ jobs:
         working-directory: ${{ env.APP_DIR }}
     
       - name: Restore Keystore from secret
+        working-directory: apps/mobile/datingapp-mobile
         run: |
-          echo "$KEYSTORE_BASE64" | base64 --decode > keystore.jks
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > keystore.jks
     
       - name: Create credentials.json
         run: |
@@ -40,7 +41,7 @@ jobs:
           {
             "android": {
               "keystore": {
-                "keystorePath": "keystore.jks",
+                "keystorePath": "./keystore.jks",
                 "keystorePassword": "${{secrets.KEYSTORE_PASSWORD}}",
                 "keyAlias": "${{secrets.KEY_ALIAS}}",
                 "keyPassword": "${{secrets.KEY_PASSWORD}}"
