@@ -63,7 +63,6 @@ jobs:
       
       - name: Debug paths
         run: |
-    #     ls -R apps/mobile/datingapp-mobile
          ls -R packages/shared
     
       - name: 🏗️ Build Android app
