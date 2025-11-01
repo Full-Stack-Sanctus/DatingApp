@@ -12,7 +12,7 @@ export default function (api) {
           root: ['./'],
           extensions: ['.tsx', '.ts', '.js', '.json'],
           alias: {
-            shared: '../../../packages/shared',
+            shared: '../../../../packages/shared',
           },
         },
       ],
