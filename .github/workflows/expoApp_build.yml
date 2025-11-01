@@ -60,6 +60,11 @@ jobs:
         # run: |
           # mkdir -p apps/mobile/datingapp-mobile/packages
           # cp -r packages/shared apps/mobile/datingapp-mobile/packages/shared
+      
+      - name: Debug paths
+        run: |
+         ls -R apps/mobile/datingapp-mobile
+         ls -R packages/shared
     
       - name: 🏗️ Build Android app
         working-directory: ${{ env.APP_DIR }}
