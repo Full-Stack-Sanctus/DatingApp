@@ -78,9 +78,3 @@ jobs:
           eas build --platform android --profile production --non-interactive
    
    
-   
-   
-   - name: Install shared package
-  working-directory: apps/mobile/datingapp-mobile
-  run: npm install ../../packages/shared
-  
