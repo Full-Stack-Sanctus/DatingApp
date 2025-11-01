@@ -8,4 +8,10 @@
     "esModuleInterop": true
   },
   "exclude": ["node_modules"]
+  "files": [],
+  "references": [
+    { "path": "packages/shared" },
+    { "path": "apps/mobile/datingapp-mobile" },
+    { "path": "apps/web/datingapp-web" }
+  ]
 }
