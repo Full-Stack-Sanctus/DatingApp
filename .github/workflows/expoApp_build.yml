@@ -63,11 +63,3 @@ jobs:
         run: |
           eas build --platform android --profile production --non-interactive
    
-      - name: Get latest build URL
-        env:
-          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
-        run: |
-          eas build:list --status finished --limit 1 --json | jq -r '.[0].artifacts.buildUrl'
-
-            
-            
