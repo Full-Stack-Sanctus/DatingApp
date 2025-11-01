@@ -4,7 +4,6 @@
   },
   "build": {
     "production": {
-      "workingDirectory": "apps/mobile/datingapp-mobile",
       "developmentClient": false,
       "distribution": "internal",
       "android": {
