@@ -3,7 +3,8 @@
 //import viteLogo from '/vite.svg'
 import './App.css'
 
-import { HomeScreen } from 'shared/components';
+//import { HomeScreen } from 'shared/components';
+import { HomeScreen } from 'shared';
 
 
 function App() {
