@@ -6,7 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const projectRoot = __dirname;
-const monorepoRoot = path.resolve(projectRoot, '../../..'); // adjust if needed
+const monorepoRoot = path.resolve(projectRoot, '../../../..'); // adjust if needed
 
 const config = getDefaultConfig(projectRoot);
 
