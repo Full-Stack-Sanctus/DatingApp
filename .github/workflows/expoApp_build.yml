@@ -23,17 +23,16 @@ jobs:
           node-version: 18
           cache: 'npm'
 
+      - name: Install all packages
+        run: |
+          npm install
+          
       - name: 📦 Install dependencies
         working-directory: ${{ env.APP_DIR }}
         run: |
           npm install -g eas-cli
           npm install
           npx expo install react react-native
-    
-      - name: Install shared package
-        working-directory: ${{ env.APP_DIR }}
-        run: |
-          npm install ../../../packages/shared
 
       - name: Restore Keystore from secret
         working-directory: apps/mobile/datingapp-mobile
