@@ -7,7 +7,7 @@
     "resolveJsonModule": true,
     "esModuleInterop": true
   },
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
   "files": [],
   "references": [
     { "path": "packages/shared" },
