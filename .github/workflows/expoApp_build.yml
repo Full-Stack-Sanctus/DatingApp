@@ -30,6 +30,11 @@ jobs:
           npm install
           npx expo install react react-native
     
+      - name: Install shared package
+        working-directory: ${{ env.APP_DIR }}
+        run: |
+          npm install ../../packages/shared
+
       - name: Restore Keystore from secret
         working-directory: apps/mobile/datingapp-mobile
         run: |
@@ -72,3 +77,10 @@ jobs:
         run: |
           eas build --platform android --profile production --non-interactive
    
+   
+   
+   
+   - name: Install shared package
+  working-directory: apps/mobile/datingapp-mobile
+  run: npm install ../../packages/shared
+  
