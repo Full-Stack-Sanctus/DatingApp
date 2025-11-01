@@ -1,6 +1,8 @@
 import path from 'path';
 import { getDefaultConfig } from 'expo/metro-config';
 
+console.log('🧩 Custom Metro config loaded from', __dirname);
+
 const projectRoot = __dirname;
 const monorepoRoot = path.resolve(projectRoot, '../../..');
 
