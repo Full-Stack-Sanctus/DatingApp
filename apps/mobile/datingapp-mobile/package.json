@@ -22,5 +22,8 @@
     "eslint": "^2.13.1",
     "eslint-plugin-react": "^4.3.0"
   },
+  "expo": {
+    "metroConfig": "./metro.config.js"
+  },
   "private": true
 }
