@@ -33,7 +33,7 @@ jobs:
       - name: Install shared package
         working-directory: ${{ env.APP_DIR }}
         run: |
-          npm install ../../packages/shared
+          npm install ../../../packages/shared
 
       - name: Restore Keystore from secret
         working-directory: apps/mobile/datingapp-mobile
