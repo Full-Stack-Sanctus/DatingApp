@@ -15,7 +15,7 @@
     "lint": "eslint ./"
   },
   "dependencies": {
-    "@shared/components": "file:../../packages/shared",
+    "shared/components": "file:../../packages/shared",
     "expo": "^54.0.21"
   },
   "devDependencies": {
