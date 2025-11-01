@@ -55,7 +55,12 @@ jobs:
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
         run: eas whoami || eas login --token $EXPO_TOKEN
-
+    
+      - name: Copy shared package into app folder
+        run: |
+          mkdir -p apps/mobile/datingapp-mobile/packages
+          cp -r packages/shared apps/mobile/datingapp-mobile/packages/shared
+    
       - name: 🏗️ Build Android app
         working-directory: ${{ env.APP_DIR }}
         env:
