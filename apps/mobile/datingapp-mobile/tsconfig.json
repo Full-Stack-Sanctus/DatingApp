@@ -10,7 +10,7 @@
     "baseUrl": ".",
     "types": ["node"],
     "paths": {
-      "shared/*": ["../../../packages/shared/*"]
+      "shared/*": ["../../packages/shared/*"]
     }
   }
 }
