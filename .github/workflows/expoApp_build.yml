@@ -31,7 +31,6 @@ jobs:
         working-directory: ${{ env.APP_DIR }}
         run: |
           npm install -g eas-cli
-          npm install
           npx expo install react react-native
 
       - name: Restore Keystore from secret
@@ -75,5 +74,4 @@ jobs:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
         run: |
           eas build --platform android --profile production --non-interactive
-   
    
