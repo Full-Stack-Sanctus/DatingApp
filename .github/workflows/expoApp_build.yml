@@ -31,7 +31,7 @@ jobs:
           corepack enable
           yarn set version berry
           yarn config set nodeLinker node-modules
-          yarn install
+          yarn install --mode=update-lockfile
 
       # ✅ Install EAS CLI globally
       - name: 📦 Install EAS CLI
