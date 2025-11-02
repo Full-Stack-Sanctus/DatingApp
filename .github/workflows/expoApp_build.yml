@@ -37,6 +37,8 @@ jobs:
       # ✅ Verify Expo installed (debugging info)
       - name: 🔍 Verify Expo environment
         working-directory: ${{ env.APP_DIR }}
+        env:
+          NODE_PATH: ${{ github.workspace }}/node_modules
         run: |
           npx expo --version
           node -p "require.resolve('expo/package.json')"
