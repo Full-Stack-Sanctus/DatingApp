@@ -33,7 +33,14 @@ jobs:
           npm install expo
           npm install -g eas-cli
           npx expo install react react-native
-
+      
+      # ✅ Verify Expo is resolvable (for debugging SDK detection)
+      - name: 🔍 Verify Expo installation
+        working-directory: ${{ env.APP_DIR }}
+        run: |
+          npx expo --version
+          node -p "require.resolve('expo/package.json')"
+          
       - name: Restore Keystore from secret
         working-directory: apps/mobile/datingapp-mobile
         run: |
