@@ -31,7 +31,6 @@ jobs:
         working-directory: ${{ env.APP_DIR }}
         run: |
           npm install expo
-          npm install expo/metro-config
           npm install -g eas-cli
           npx expo install react react-native
       
