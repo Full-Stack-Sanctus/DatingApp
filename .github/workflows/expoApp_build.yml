@@ -1,4 +1,4 @@
-name: Build Expo Android APK (Local)
+name: Build Expo Android App (Monorepo + EAS)
 
 on:
   push:
@@ -9,52 +9,77 @@ on:
 jobs:
   build-android:
     runs-on: ubuntu-latest
+
     env:
       APP_DIR: apps/mobile/datingapp-mobile
-      CI: 1
-      
+      EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+      EXPO_NO_INTERACTIVE: true
+      NODE_ENV: production
+
     steps:
       - name: 🛎️ Checkout repository
         uses: actions/checkout@v4
 
-      - name: ⚙️ Set up Node.js
+      - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
+          cache: 'npm'
 
-      - name: 📦 Install dependencies
-        env:
-          CI: 1
-          
+      # ✅ Install from monorepo root to maintain workspace links
+      - name: 📦 Install all dependencies (workspace root)
+        run: npm ci
+
+      # ✅ Install EAS CLI globally
+      - name: 📦 Install EAS CLI
+        run: npm install -g eas-cli
+
+      # ✅ Verify Expo installed (debugging info)
+      - name: 🔍 Verify Expo environment
+        working-directory: ${{ env.APP_DIR }}
         run: |
-          npm install -g expo-cli
-          npm install
-          cd $APP_DIR
-          npm install
-          npx expo install --fix -- --yes
-          npx expo prebuild --platform android
+          npx expo --version
+          node -p "require.resolve('expo/package.json')"
 
-      - name: ☕ Set up Java & Gradle
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'temurin'
-          java-version: 17
-
-      - name: 🔐 Restore Keystore
-        working-directory: ${{ env.APP_DIR }}/android
+      # ✅ Restore Android keystore
+      - name: 🔐 Restore Android keystore
+        working-directory: ${{ env.APP_DIR }}
         run: |
           echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > keystore.jks
-          echo "storePassword=${{ secrets.KEYSTORE_PASSWORD }}" > keystore.properties
-          echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> keystore.properties
-          echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> keystore.properties
-          echo "storeFile=keystore.jks" >> keystore.properties
 
-      - name: 🏗️ Build Release APK
-        working-directory: ${{ env.APP_DIR }}/android
-        run: ./gradlew assembleRelease
+      # ✅ Create credentials.json for EAS
+      - name: 🗝️ Create credentials.json
+        working-directory: ${{ env.APP_DIR }}
+        run: |
+          cat <<EOF > credentials.json
+          {
+            "android": {
+              "keystore": {
+                "keystorePath": "./keystore.jks",
+                "keystorePassword": "${{ secrets.KEYSTORE_PASSWORD }}",
+                "keyAlias": "${{ secrets.KEY_ALIAS }}",
+                "keyPassword": "${{ secrets.KEY_PASSWORD }}"
+              }
+            }
+          }
+          EOF
 
-      - name: 📦 Upload artifact
-        uses: actions/upload-artifact@v4
+      # ✅ Authenticate with EAS
+      - name: 🔐 Authenticate with Expo
+        run: eas whoami || eas login --token $EXPO_TOKEN
+
+      # ✅ (Optional) Cache Gradle to speed up builds
+      - name: ☕ Cache Gradle
+        uses: actions/cache@v4
         with:
-          name: app-release
-          path: ${{ env.APP_DIR }}/android/app/build/outputs/apk/release/app-release.apk
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            gradle-${{ runner.os }}
+
+      # ✅ Build Android app
+      - name: 🏗️ Build Android app with EAS
+        working-directory: ${{ env.APP_DIR }}
+        run: eas build --platform android --profile production --non-interactive
