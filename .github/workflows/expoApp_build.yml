@@ -60,7 +60,11 @@ jobs:
             ~/.gradle/caches
             ~/.gradle/wrapper
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/android/build.gradle') }}
-
+        
+      - name: 📱 Expo Prebuild Android
+        working-directory: ${{ env.APP_DIR }}
+        run: npx expo prebuild --platform android --non-interactive
+  
       # 8️⃣ Restore Android keystore
       - name: 🔐 Restore Keystore
         working-directory: ${{ env.APP_DIR }}/android
