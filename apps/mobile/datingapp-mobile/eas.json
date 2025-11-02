@@ -4,6 +4,8 @@
   },
   "build": {
     "production": {
+      "node": "18",
+      "yarn": "3.6.1",
       "developmentClient": false,
       "distribution": "internal",
       "android": {

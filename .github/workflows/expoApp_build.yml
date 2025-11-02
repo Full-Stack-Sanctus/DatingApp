@@ -24,11 +24,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: 'npm'
 
       # ✅ Install from monorepo root to maintain workspace links
-      - name: 📦 Install all dependencies (workspace root)
-        run: npm install
+      - name: 🧶 Setup Yarn 3
+        run: |
+          corepack enable
+          yarn set version berry
+          yarn config set nodeLinker node-modules
+          yarn install
 
       # ✅ Install EAS CLI globally
       - name: 📦 Install EAS CLI
