@@ -27,7 +27,7 @@ jobs:
           npm install
           cd $APP_DIR
           npm install
-          npx expo install --fix -- --non-interactive
+          npx expo install --fix -- --yes
           npx expo prebuild --platform android
 
       - name: ☕ Set up Java & Gradle
