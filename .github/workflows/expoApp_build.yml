@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       APP_DIR: apps/mobile/datingapp-mobile
+      CI: true
 
     steps:
       - name: 🛎️ Checkout repository
@@ -22,6 +23,8 @@ jobs:
           node-version: 18
 
       - name: 📦 Install dependencies
+        env: 
+          CI: true
         run: |
           npm install -g expo-cli
           npm install
