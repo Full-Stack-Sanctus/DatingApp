@@ -11,7 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       APP_DIR: apps/mobile/datingapp-mobile
-
+      CI: 1
+      
     steps:
       - name: 🛎️ Checkout repository
         uses: actions/checkout@v4
@@ -22,6 +23,9 @@ jobs:
           node-version: 18
 
       - name: 📦 Install dependencies
+        env:
+          CI: 1
+          
         run: |
           npm install -g expo-cli
           npm install
