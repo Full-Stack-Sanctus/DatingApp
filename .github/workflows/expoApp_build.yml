@@ -30,6 +30,7 @@ jobs:
       - name: 📦 Install dependencies
         working-directory: ${{ env.APP_DIR }}
         run: |
+          npm install expo
           npm install -g eas-cli
           npx expo install react react-native
 

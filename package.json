@@ -12,6 +12,12 @@
   "dependencies": {
     "react-native-web": "^0.21.2"
   },
+  "nohoist": [
+    "expo",
+    "expo/**",
+    "react-native",
+    "react-native/**"
+  ],
   "devDependencies": {
     "@types/node": "^24.9.2",
     "@types/react": "^19.2.2",
