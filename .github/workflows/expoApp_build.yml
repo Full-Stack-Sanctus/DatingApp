@@ -12,45 +12,75 @@ jobs:
     env:
       APP_DIR: apps/mobile/datingapp-mobile
       CI: 1
-      
+
     steps:
+      # 1️⃣ Checkout the repository
       - name: 🛎️ Checkout repository
         uses: actions/checkout@v4
 
+      # 2️⃣ Setup Node.js
       - name: ⚙️ Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
-      
-       ✅ Install from monorepo root to maintain workspace links
-      - name: 🧶 Setup Yarn 4 And Dependencies Installations
+
+      # 3️⃣ Enable Yarn (Classic 1.22.22 for maximum Expo compatibility)
+      - name: 🧶 Setup Yarn 1
         run: |
           corepack enable
-          yarn set version berry
-          yarn config set nodeLinker node-modules
-          yarn install --mode=update-lockfile
+          corepack prepare yarn@1.22.22 --activate
+          yarn -v
 
-      - name: ☕ Set up Java & Gradle
+      # 4️⃣ Cache Yarn dependencies
+      - name: Cache Yarn
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.yarn/cache
+            node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+
+      # 5️⃣ Install dependencies from monorepo root to maintain workspace links
+      # if you have yarn.lock: yarn install --frozen-lockfile
+      - name: 📦 Install dependencies
+        run: yarn install --mode=update-lockfile
+
+      # 6️⃣ Setup Java & Gradle
+      - name: ☕ Setup Java
         uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
+          distribution: temurin
           java-version: 17
 
+      # 7️⃣ Cache Gradle
+      - name: Cache Gradle
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/android/build.gradle') }}
+
+      # 8️⃣ Restore Android keystore
       - name: 🔐 Restore Keystore
         working-directory: ${{ env.APP_DIR }}/android
         run: |
           echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > keystore.jks
-          echo "storePassword=${{ secrets.KEYSTORE_PASSWORD }}" > keystore.properties
-          echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> keystore.properties
-          echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> keystore.properties
-          echo "storeFile=keystore.jks" >> keystore.properties
+          cat <<EOF > keystore.properties
+storeFile=keystore.jks
+storePassword=${{ secrets.KEYSTORE_PASSWORD }}
+keyAlias=${{ secrets.KEY_ALIAS }}
+keyPassword=${{ secrets.KEY_PASSWORD }}
+EOF
 
-      - name: 🏗️ Build Release APK
+      # 9️⃣ Build Release APK
+      - name: 🏗️ Build APK
         working-directory: ${{ env.APP_DIR }}/android
         run: ./gradlew assembleRelease
 
+      # 🔟 Upload APK as artifact
       - name: 📦 Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: app-release
-          path: ${{ env.APP_DIR }}/android/app/build/outputs/apk/release/app-release.apk      
+          path: ${{ env.APP_DIR }}/android/app/build/outputs/apk/release/app-release.apk
