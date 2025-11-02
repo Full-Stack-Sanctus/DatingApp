@@ -38,17 +38,17 @@ jobs:
         run: npm install -g eas-cli
 
       # ✅ Verify Expo installed (debugging info)
-      - name: 🔍 Verify Expo environment
-        working-directory: ${{ env.APP_DIR }}
-        run: |
-          npx expo --version
-          node -p "require.resolve('expo/package.json')"
+      # - name: 🔍 Verify Expo environment
+       # working-directory: ${{ env.APP_DIR }}
+        #run: |
+        #  npx expo --version
+        #  node -p "require.resolve('expo/package.json')"
 
       # ✅ Restore Android keystore
-      # - name: 🔐 Restore Android keystore
-      #  working-directory: ${{ env.APP_DIR }}
-       # run: |
-       #   echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > keystore.jks
+      - name: 🔐 Restore Android keystore
+        working-directory: ${{ env.APP_DIR }}
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > keystore.jks
 
       # ✅ Create credentials.json for EAS
       - name: 🗝️ Create credentials.json
