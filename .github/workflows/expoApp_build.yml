@@ -28,7 +28,7 @@ jobs:
 
       # ✅ Install from monorepo root to maintain workspace links
       - name: 📦 Install all dependencies (workspace root)
-        run: npm ci
+        run: npm install
 
       # ✅ Install EAS CLI globally
       - name: 📦 Install EAS CLI
