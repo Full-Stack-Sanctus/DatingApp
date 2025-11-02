@@ -10,7 +10,8 @@
     "build:web": "cd apps/web/datingapp-web && npm run build"
   },
   "dependencies": {
-    "react-native-web": "^0.21.2"
+    "react-native-web": "^0.21.2",
+    "expo": "^54.0.21"
   },
   "nohoist": [
     "expo",
