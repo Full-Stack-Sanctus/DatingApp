@@ -67,11 +67,11 @@ jobs:
         run: |
           echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > keystore.jks
           cat <<EOF > keystore.properties
-storeFile=keystore.jks
-storePassword=${{ secrets.KEYSTORE_PASSWORD }}
-keyAlias=${{ secrets.KEY_ALIAS }}
-keyPassword=${{ secrets.KEY_PASSWORD }}
-EOF
+                 storeFile=keystore.jks
+                 storePassword=${{ secrets.KEYSTORE_PASSWORD }}
+                 keyAlias=${{ secrets.KEY_ALIAS }}
+                 keyPassword=${{ secrets.KEY_PASSWORD }}
+               EOF
 
       # 9️⃣ Build Release APK
       - name: 🏗️ Build APK
