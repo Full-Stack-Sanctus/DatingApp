@@ -29,12 +29,6 @@ jobs:
           yarn set version berry
           yarn config set nodeLinker node-modules
           yarn install --mode=update-lockfile
-          
-      # - name: 📦 Install dependencies
-       # env:
-        #  CI: 1
-       # run: |
-        #  yarn install --frozen-lockfile
 
       - name: ☕ Set up Java & Gradle
         uses: actions/setup-java@v4
