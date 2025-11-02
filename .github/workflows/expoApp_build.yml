@@ -41,10 +41,14 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
 
       # 5️⃣ Install dependencies from monorepo root to maintain workspace links
-      # if you have yarn.lock: yarn install --frozen-lockfile
+      # if you have yarn.lock: yarn install --mode=update-lockfile
       - name: 📦 Install dependencies
-        run: yarn install --mode=update-lockfile
-
+        run: yarn install --frozen-lockfile
+      
+      # Add root node_modules/.bin to PATH for Gradle
+      - name: Add Node bin to PATH
+        run: echo "${{ github.workspace }}/node_modules/.bin:$PATH" >> $GITHUB_ENV
+        
       # 6️⃣ Setup Java & Gradle
       - name: ☕ Setup Java
         uses: actions/setup-java@v4
