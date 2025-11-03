@@ -15,6 +15,7 @@
     "lint": "eslint ./"
   },
   "dependencies": {
+    "expo": "^54.0.21",
     "shared": "workspace:*"
   },
   "devDependencies": {

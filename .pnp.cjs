@@ -2407,6 +2407,91 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "SOFT"\
       }],\
+      ["virtual:6e31b94ab5e2608b387e78631be1b699be0bca453eab815edf3b6bfe8e7f269425ea63fbc9482f025aea8688770e348b9b36ae8d2fcf97256693edc23b68ba0f#npm:54.0.14", {\
+        "packageLocation": "./.yarn/__virtual__/@expo-cli-virtual-c858cfcdbc/6/root/.yarn/berry/cache/@expo-cli-npm-54.0.14-c0839be00a-10c0.zip/node_modules/@expo/cli/",\
+        "packageDependencies": [\
+          ["@0no-co/graphql.web", "virtual:d99c53f9f6e620103eab8a7affb2a0a10f500c1d59884d461b9c4f1409327bad1b46d10c06e6dd5b7dfaab27946e0b494e90293f7066c198182cf2ac192cca50#npm:1.2.0"],\
+          ["@expo/cli", "virtual:6e31b94ab5e2608b387e78631be1b699be0bca453eab815edf3b6bfe8e7f269425ea63fbc9482f025aea8688770e348b9b36ae8d2fcf97256693edc23b68ba0f#npm:54.0.14"],\
+          ["@expo/code-signing-certificates", "npm:0.0.5"],\
+          ["@expo/config", "npm:12.0.10"],\
+          ["@expo/config-plugins", "npm:54.0.2"],\
+          ["@expo/devcert", "npm:1.2.0"],\
+          ["@expo/env", "npm:2.0.7"],\
+          ["@expo/image-utils", "npm:0.8.7"],\
+          ["@expo/json-file", "npm:10.0.7"],\
+          ["@expo/mcp-tunnel", "virtual:ac6df68fd2351f92e97b9ed1129f08d4e69f596e4b93d5a4b6958b45e2e9ce4b2975f864345baedbf66bde3eb8bbb4d2d9b6828c7e4863d2ee9939faae518569#npm:0.0.8"],\
+          ["@expo/metro", "npm:54.1.0"],\
+          ["@expo/metro-config", "virtual:6e31b94ab5e2608b387e78631be1b699be0bca453eab815edf3b6bfe8e7f269425ea63fbc9482f025aea8688770e348b9b36ae8d2fcf97256693edc23b68ba0f#npm:54.0.8"],\
+          ["@expo/osascript", "npm:2.3.7"],\
+          ["@expo/package-manager", "npm:1.9.8"],\
+          ["@expo/plist", "npm:0.4.7"],\
+          ["@expo/prebuild-config", "virtual:c858cfcdbcec1ac84b2cb0cd9f2a95cc50d4720da25a8f34fd1feffd164225770e14314ea1f92fc6f21d2e788820897ef53db25c80ca6910a2d78c84509b1b73#npm:54.0.6"],\
+          ["@expo/schema-utils", "npm:0.1.7"],\
+          ["@expo/spawn-async", "npm:1.7.2"],\
+          ["@expo/ws-tunnel", "npm:1.0.6"],\
+          ["@expo/xcpretty", "npm:4.3.2"],\
+          ["@react-native/dev-middleware", "npm:0.81.5"],\
+          ["@types/expo", null],\
+          ["@types/expo-router", null],\
+          ["@types/react-native", null],\
+          ["@urql/core", "npm:5.2.0"],\
+          ["@urql/exchange-retry", "virtual:ac6df68fd2351f92e97b9ed1129f08d4e69f596e4b93d5a4b6958b45e2e9ce4b2975f864345baedbf66bde3eb8bbb4d2d9b6828c7e4863d2ee9939faae518569#npm:1.3.2"],\
+          ["accepts", "npm:1.3.8"],\
+          ["arg", "npm:5.0.2"],\
+          ["better-opn", "npm:3.0.2"],\
+          ["bplist-creator", "npm:0.1.0"],\
+          ["bplist-parser", "npm:0.3.2"],\
+          ["chalk", "npm:4.1.2"],\
+          ["ci-info", "npm:3.9.0"],\
+          ["compression", "npm:1.8.1"],\
+          ["connect", "npm:3.7.0"],\
+          ["debug", "virtual:b9c486bcd6b584a15934b4272d21cc8228e82f46115ab5f6c58f2b4da1d025ce44a292a9c5c2b3efd27c6c8fbfe13fa10fda960d719a0438bf918b87421723ec#npm:4.4.3"],\
+          ["env-editor", "npm:0.4.2"],\
+          ["expo", "virtual:bbeb22238bbd80aee0a2f4be36418a0d665d7c69dbb463c39c890daa57836010a0c1ec5332859eacae1427e0c36cc9bbd8b9b5f7fe7d8f8dbba6745fa8071d17#npm:54.0.21"],\
+          ["expo-router", null],\
+          ["expo-server", "npm:1.0.3"],\
+          ["freeport-async", "npm:2.0.0"],\
+          ["getenv", "npm:2.0.0"],\
+          ["glob", "npm:10.4.5"],\
+          ["lan-network", "npm:0.1.7"],\
+          ["minimatch", "npm:9.0.5"],\
+          ["node-forge", "npm:1.3.1"],\
+          ["npm-package-arg", "npm:11.0.3"],\
+          ["ora", "npm:3.4.0"],\
+          ["picomatch", "npm:3.0.1"],\
+          ["pretty-bytes", "npm:5.6.0"],\
+          ["pretty-format", "npm:29.7.0"],\
+          ["progress", "npm:2.0.3"],\
+          ["prompts", "npm:2.4.2"],\
+          ["qrcode-terminal", "npm:0.11.0"],\
+          ["react-native", null],\
+          ["require-from-string", "npm:2.0.2"],\
+          ["requireg", "npm:0.2.2"],\
+          ["resolve", "patch:resolve@npm%3A1.22.11#optional!builtin<compat/resolve>::version=1.22.11&hash=c3c19d"],\
+          ["resolve-from", "npm:5.0.0"],\
+          ["resolve.exports", "npm:2.0.3"],\
+          ["semver", "npm:7.7.3"],\
+          ["send", "npm:0.19.1"],\
+          ["slugify", "npm:1.6.6"],\
+          ["source-map-support", "npm:0.5.21"],\
+          ["stacktrace-parser", "npm:0.1.11"],\
+          ["structured-headers", "npm:0.4.1"],\
+          ["tar", "npm:7.5.2"],\
+          ["terminal-link", "npm:2.1.1"],\
+          ["undici", "npm:6.22.0"],\
+          ["wrap-ansi", "npm:7.0.0"],\
+          ["ws", "virtual:ac6df68fd2351f92e97b9ed1129f08d4e69f596e4b93d5a4b6958b45e2e9ce4b2975f864345baedbf66bde3eb8bbb4d2d9b6828c7e4863d2ee9939faae518569#npm:8.18.3"]\
+        ],\
+        "packagePeers": [\
+          "@types/expo-router",\
+          "@types/expo",\
+          "@types/react-native",\
+          "expo-router",\
+          "expo",\
+          "react-native"\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["virtual:a37af0cbb37a28d12847e2c2ccc033b79f493b2467dae26f1bd1a3aef4b1f62fcbf7f7d9acbebd9ed07c5eab6ad1c87cc4741b5a0dfd55bba2d054e8c7d9ac24#npm:54.0.14", {\
         "packageLocation": "./.yarn/__virtual__/@expo-cli-virtual-ac6df68fd2/6/root/.yarn/berry/cache/@expo-cli-npm-54.0.14-c0839be00a-10c0.zip/node_modules/@expo/cli/",\
         "packageDependencies": [\
@@ -2578,6 +2663,24 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "SOFT"\
       }],\
+      ["virtual:6e31b94ab5e2608b387e78631be1b699be0bca453eab815edf3b6bfe8e7f269425ea63fbc9482f025aea8688770e348b9b36ae8d2fcf97256693edc23b68ba0f#npm:0.1.7", {\
+        "packageLocation": "./.yarn/__virtual__/@expo-devtools-virtual-4d332ee45c/6/root/.yarn/berry/cache/@expo-devtools-npm-0.1.7-220d545b31-10c0.zip/node_modules/@expo/devtools/",\
+        "packageDependencies": [\
+          ["@expo/devtools", "virtual:6e31b94ab5e2608b387e78631be1b699be0bca453eab815edf3b6bfe8e7f269425ea63fbc9482f025aea8688770e348b9b36ae8d2fcf97256693edc23b68ba0f#npm:0.1.7"],\
+          ["@types/react", null],\
+          ["@types/react-native", null],\
+          ["chalk", "npm:4.1.2"],\
+          ["react", null],\
+          ["react-native", null]\
+        ],\
+        "packagePeers": [\
+          "@types/react-native",\
+          "@types/react",\
+          "react-native",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["virtual:a37af0cbb37a28d12847e2c2ccc033b79f493b2467dae26f1bd1a3aef4b1f62fcbf7f7d9acbebd9ed07c5eab6ad1c87cc4741b5a0dfd55bba2d054e8c7d9ac24#npm:0.1.7", {\
         "packageLocation": "./.yarn/__virtual__/@expo-devtools-virtual-53fc627bd3/6/root/.yarn/berry/cache/@expo-devtools-npm-0.1.7-220d545b31-10c0.zip/node_modules/@expo/devtools/",\
         "packageDependencies": [\
@@ -2715,6 +2818,40 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "SOFT"\
       }],\
+      ["virtual:6e31b94ab5e2608b387e78631be1b699be0bca453eab815edf3b6bfe8e7f269425ea63fbc9482f025aea8688770e348b9b36ae8d2fcf97256693edc23b68ba0f#npm:54.0.8", {\
+        "packageLocation": "./.yarn/__virtual__/@expo-metro-config-virtual-4e00dbdb78/6/root/.yarn/berry/cache/@expo-metro-config-npm-54.0.8-df5c681b6a-10c0.zip/node_modules/@expo/metro-config/",\
+        "packageDependencies": [\
+          ["@babel/code-frame", "npm:7.27.1"],\
+          ["@babel/core", "npm:7.28.5"],\
+          ["@babel/generator", "npm:7.28.5"],\
+          ["@expo/config", "npm:12.0.10"],\
+          ["@expo/env", "npm:2.0.7"],\
+          ["@expo/json-file", "npm:10.0.7"],\
+          ["@expo/metro", "npm:54.1.0"],\
+          ["@expo/metro-config", "virtual:6e31b94ab5e2608b387e78631be1b699be0bca453eab815edf3b6bfe8e7f269425ea63fbc9482f025aea8688770e348b9b36ae8d2fcf97256693edc23b68ba0f#npm:54.0.8"],\
+          ["@expo/spawn-async", "npm:1.7.2"],\
+          ["@types/expo", null],\
+          ["browserslist", "npm:4.27.0"],\
+          ["chalk", "npm:4.1.2"],\
+          ["debug", "virtual:b9c486bcd6b584a15934b4272d21cc8228e82f46115ab5f6c58f2b4da1d025ce44a292a9c5c2b3efd27c6c8fbfe13fa10fda960d719a0438bf918b87421723ec#npm:4.4.3"],\
+          ["dotenv", "npm:16.4.7"],\
+          ["dotenv-expand", "npm:11.0.7"],\
+          ["expo", "virtual:bbeb22238bbd80aee0a2f4be36418a0d665d7c69dbb463c39c890daa57836010a0c1ec5332859eacae1427e0c36cc9bbd8b9b5f7fe7d8f8dbba6745fa8071d17#npm:54.0.21"],\
+          ["getenv", "npm:2.0.0"],\
+          ["glob", "npm:10.4.5"],\
+          ["hermes-parser", "npm:0.29.1"],\
+          ["jsc-safe-url", "npm:0.2.4"],\
+          ["lightningcss", "npm:1.30.2"],\
+          ["minimatch", "npm:9.0.5"],\
+          ["postcss", "npm:8.4.49"],\
+          ["resolve-from", "npm:5.0.0"]\
+        ],\
+        "packagePeers": [\
+          "@types/expo",\
+          "expo"\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["virtual:a37af0cbb37a28d12847e2c2ccc033b79f493b2467dae26f1bd1a3aef4b1f62fcbf7f7d9acbebd9ed07c5eab6ad1c87cc4741b5a0dfd55bba2d054e8c7d9ac24#npm:54.0.8", {\
         "packageLocation": "./.yarn/__virtual__/@expo-metro-config-virtual-df25d910bb/6/root/.yarn/berry/cache/@expo-metro-config-npm-54.0.8-df5c681b6a-10c0.zip/node_modules/@expo/metro-config/",\
         "packageDependencies": [\
@@ -2818,6 +2955,29 @@ const RAW_RUNTIME_STATE =
           "expo"\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["virtual:c858cfcdbcec1ac84b2cb0cd9f2a95cc50d4720da25a8f34fd1feffd164225770e14314ea1f92fc6f21d2e788820897ef53db25c80ca6910a2d78c84509b1b73#npm:54.0.6", {\
+        "packageLocation": "./.yarn/__virtual__/@expo-prebuild-config-virtual-76f9eac2a8/6/root/.yarn/berry/cache/@expo-prebuild-config-npm-54.0.6-84ad5605ec-10c0.zip/node_modules/@expo/prebuild-config/",\
+        "packageDependencies": [\
+          ["@expo/config", "npm:12.0.10"],\
+          ["@expo/config-plugins", "npm:54.0.2"],\
+          ["@expo/config-types", "npm:54.0.8"],\
+          ["@expo/image-utils", "npm:0.8.7"],\
+          ["@expo/json-file", "npm:10.0.7"],\
+          ["@expo/prebuild-config", "virtual:c858cfcdbcec1ac84b2cb0cd9f2a95cc50d4720da25a8f34fd1feffd164225770e14314ea1f92fc6f21d2e788820897ef53db25c80ca6910a2d78c84509b1b73#npm:54.0.6"],\
+          ["@react-native/normalize-colors", "npm:0.81.5"],\
+          ["@types/expo", null],\
+          ["debug", "virtual:b9c486bcd6b584a15934b4272d21cc8228e82f46115ab5f6c58f2b4da1d025ce44a292a9c5c2b3efd27c6c8fbfe13fa10fda960d719a0438bf918b87421723ec#npm:4.4.3"],\
+          ["expo", "virtual:bbeb22238bbd80aee0a2f4be36418a0d665d7c69dbb463c39c890daa57836010a0c1ec5332859eacae1427e0c36cc9bbd8b9b5f7fe7d8f8dbba6745fa8071d17#npm:54.0.21"],\
+          ["resolve-from", "npm:5.0.0"],\
+          ["semver", "npm:7.7.3"],\
+          ["xml2js", "npm:0.6.0"]\
+        ],\
+        "packagePeers": [\
+          "@types/expo",\
+          "expo"\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["@expo/schema-utils", [\
@@ -2864,6 +3024,27 @@ const RAW_RUNTIME_STATE =
           ["@expo/vector-icons", "npm:15.0.3"]\
         ],\
         "linkType": "SOFT"\
+      }],\
+      ["virtual:6e31b94ab5e2608b387e78631be1b699be0bca453eab815edf3b6bfe8e7f269425ea63fbc9482f025aea8688770e348b9b36ae8d2fcf97256693edc23b68ba0f#npm:15.0.3", {\
+        "packageLocation": "./.yarn/__virtual__/@expo-vector-icons-virtual-8674d988ff/6/root/.yarn/berry/cache/@expo-vector-icons-npm-15.0.3-e6920b6757-10c0.zip/node_modules/@expo/vector-icons/",\
+        "packageDependencies": [\
+          ["@expo/vector-icons", "virtual:6e31b94ab5e2608b387e78631be1b699be0bca453eab815edf3b6bfe8e7f269425ea63fbc9482f025aea8688770e348b9b36ae8d2fcf97256693edc23b68ba0f#npm:15.0.3"],\
+          ["@types/expo-font", null],\
+          ["@types/react", null],\
+          ["@types/react-native", null],\
+          ["expo-font", "virtual:6e31b94ab5e2608b387e78631be1b699be0bca453eab815edf3b6bfe8e7f269425ea63fbc9482f025aea8688770e348b9b36ae8d2fcf97256693edc23b68ba0f#npm:14.0.9"],\
+          ["react", null],\
+          ["react-native", null]\
+        ],\
+        "packagePeers": [\
+          "@types/expo-font",\
+          "@types/react-native",\
+          "@types/react",\
+          "expo-font",\
+          "react-native",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
       }],\
       ["virtual:a37af0cbb37a28d12847e2c2ccc033b79f493b2467dae26f1bd1a3aef4b1f62fcbf7f7d9acbebd9ed07c5eab6ad1c87cc4741b5a0dfd55bba2d054e8c7d9ac24#npm:15.0.3", {\
         "packageLocation": "./.yarn/__virtual__/@expo-vector-icons-virtual-a7ea435885/6/root/.yarn/berry/cache/@expo-vector-icons-npm-15.0.3-e6920b6757-10c0.zip/node_modules/@expo/vector-icons/",\
@@ -4516,6 +4697,49 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "SOFT"\
       }],\
+      ["virtual:6e31b94ab5e2608b387e78631be1b699be0bca453eab815edf3b6bfe8e7f269425ea63fbc9482f025aea8688770e348b9b36ae8d2fcf97256693edc23b68ba0f#npm:54.0.6", {\
+        "packageLocation": "./.yarn/__virtual__/babel-preset-expo-virtual-b16a11493e/6/root/.yarn/berry/cache/babel-preset-expo-npm-54.0.6-032694aa36-10c0.zip/node_modules/babel-preset-expo/",\
+        "packageDependencies": [\
+          ["@babel/helper-module-imports", "npm:7.27.1"],\
+          ["@babel/plugin-proposal-decorators", "virtual:bf1797fc8b31b96782ce3b694de06569404e086f90846ae5a08d65d82072211323e4816f6cd49e1d399d5531c09db79a5004daae15ee89137d1487bde36f6f59#npm:7.28.0"],\
+          ["@babel/plugin-proposal-export-default-from", "virtual:bf1797fc8b31b96782ce3b694de06569404e086f90846ae5a08d65d82072211323e4816f6cd49e1d399d5531c09db79a5004daae15ee89137d1487bde36f6f59#npm:7.27.1"],\
+          ["@babel/plugin-syntax-export-default-from", "virtual:bf1797fc8b31b96782ce3b694de06569404e086f90846ae5a08d65d82072211323e4816f6cd49e1d399d5531c09db79a5004daae15ee89137d1487bde36f6f59#npm:7.27.1"],\
+          ["@babel/plugin-transform-class-static-block", "virtual:bf1797fc8b31b96782ce3b694de06569404e086f90846ae5a08d65d82072211323e4816f6cd49e1d399d5531c09db79a5004daae15ee89137d1487bde36f6f59#npm:7.28.3"],\
+          ["@babel/plugin-transform-export-namespace-from", "virtual:bf1797fc8b31b96782ce3b694de06569404e086f90846ae5a08d65d82072211323e4816f6cd49e1d399d5531c09db79a5004daae15ee89137d1487bde36f6f59#npm:7.27.1"],\
+          ["@babel/plugin-transform-flow-strip-types", "virtual:bf1797fc8b31b96782ce3b694de06569404e086f90846ae5a08d65d82072211323e4816f6cd49e1d399d5531c09db79a5004daae15ee89137d1487bde36f6f59#npm:7.27.1"],\
+          ["@babel/plugin-transform-modules-commonjs", "virtual:bf1797fc8b31b96782ce3b694de06569404e086f90846ae5a08d65d82072211323e4816f6cd49e1d399d5531c09db79a5004daae15ee89137d1487bde36f6f59#npm:7.27.1"],\
+          ["@babel/plugin-transform-object-rest-spread", "virtual:bf1797fc8b31b96782ce3b694de06569404e086f90846ae5a08d65d82072211323e4816f6cd49e1d399d5531c09db79a5004daae15ee89137d1487bde36f6f59#npm:7.28.4"],\
+          ["@babel/plugin-transform-parameters", "virtual:bf1797fc8b31b96782ce3b694de06569404e086f90846ae5a08d65d82072211323e4816f6cd49e1d399d5531c09db79a5004daae15ee89137d1487bde36f6f59#npm:7.27.7"],\
+          ["@babel/plugin-transform-private-methods", "virtual:bf1797fc8b31b96782ce3b694de06569404e086f90846ae5a08d65d82072211323e4816f6cd49e1d399d5531c09db79a5004daae15ee89137d1487bde36f6f59#npm:7.27.1"],\
+          ["@babel/plugin-transform-private-property-in-object", "virtual:bf1797fc8b31b96782ce3b694de06569404e086f90846ae5a08d65d82072211323e4816f6cd49e1d399d5531c09db79a5004daae15ee89137d1487bde36f6f59#npm:7.27.1"],\
+          ["@babel/plugin-transform-runtime", "virtual:bf1797fc8b31b96782ce3b694de06569404e086f90846ae5a08d65d82072211323e4816f6cd49e1d399d5531c09db79a5004daae15ee89137d1487bde36f6f59#npm:7.28.5"],\
+          ["@babel/preset-react", "virtual:bf1797fc8b31b96782ce3b694de06569404e086f90846ae5a08d65d82072211323e4816f6cd49e1d399d5531c09db79a5004daae15ee89137d1487bde36f6f59#npm:7.28.5"],\
+          ["@babel/preset-typescript", "virtual:bf1797fc8b31b96782ce3b694de06569404e086f90846ae5a08d65d82072211323e4816f6cd49e1d399d5531c09db79a5004daae15ee89137d1487bde36f6f59#npm:7.28.5"],\
+          ["@babel/runtime", "npm:7.28.4"],\
+          ["@react-native/babel-preset", "virtual:bf1797fc8b31b96782ce3b694de06569404e086f90846ae5a08d65d82072211323e4816f6cd49e1d399d5531c09db79a5004daae15ee89137d1487bde36f6f59#npm:0.81.5"],\
+          ["@types/babel__runtime", null],\
+          ["@types/expo", null],\
+          ["@types/react-refresh", null],\
+          ["babel-plugin-react-compiler", "npm:1.0.0"],\
+          ["babel-plugin-react-native-web", "npm:0.21.2"],\
+          ["babel-plugin-syntax-hermes-parser", "npm:0.29.1"],\
+          ["babel-plugin-transform-flow-enums", "npm:0.0.2"],\
+          ["babel-preset-expo", "virtual:6e31b94ab5e2608b387e78631be1b699be0bca453eab815edf3b6bfe8e7f269425ea63fbc9482f025aea8688770e348b9b36ae8d2fcf97256693edc23b68ba0f#npm:54.0.6"],\
+          ["debug", "virtual:b9c486bcd6b584a15934b4272d21cc8228e82f46115ab5f6c58f2b4da1d025ce44a292a9c5c2b3efd27c6c8fbfe13fa10fda960d719a0438bf918b87421723ec#npm:4.4.3"],\
+          ["expo", "virtual:bbeb22238bbd80aee0a2f4be36418a0d665d7c69dbb463c39c890daa57836010a0c1ec5332859eacae1427e0c36cc9bbd8b9b5f7fe7d8f8dbba6745fa8071d17#npm:54.0.21"],\
+          ["react-refresh", "npm:0.14.2"],\
+          ["resolve-from", "npm:5.0.0"]\
+        ],\
+        "packagePeers": [\
+          "@babel/runtime",\
+          "@types/babel__runtime",\
+          "@types/expo",\
+          "@types/react-refresh",\
+          "expo",\
+          "react-refresh"\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["virtual:a37af0cbb37a28d12847e2c2ccc033b79f493b2467dae26f1bd1a3aef4b1f62fcbf7f7d9acbebd9ed07c5eab6ad1c87cc4741b5a0dfd55bba2d054e8c7d9ac24#npm:54.0.6", {\
         "packageLocation": "./.yarn/__virtual__/babel-preset-expo-virtual-bf1797fc8b/6/root/.yarn/berry/cache/babel-preset-expo-npm-54.0.6-032694aa36-10c0.zip/node_modules/babel-preset-expo/",\
         "packageDependencies": [\
@@ -5277,6 +5501,7 @@ const RAW_RUNTIME_STATE =
           ["datingapp-mobile", "workspace:apps/mobile/datingapp-mobile"],\
           ["eslint", "npm:2.13.1"],\
           ["eslint-plugin-react", "npm:4.3.0"],\
+          ["expo", "virtual:bbeb22238bbd80aee0a2f4be36418a0d665d7c69dbb463c39c890daa57836010a0c1ec5332859eacae1427e0c36cc9bbd8b9b5f7fe7d8f8dbba6745fa8071d17#npm:54.0.21"],\
           ["shared", "virtual:bbeb22238bbd80aee0a2f4be36418a0d665d7c69dbb463c39c890daa57836010a0c1ec5332859eacae1427e0c36cc9bbd8b9b5f7fe7d8f8dbba6745fa8071d17#workspace:packages/shared"]\
         ],\
         "linkType": "SOFT"\
@@ -6100,11 +6325,61 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["expo", [\
       ["npm:54.0.21", {\
-        "packageLocation": "./.yarn/unplugged/expo-virtual-a37af0cbb3/node_modules/expo/",\
+        "packageLocation": "./.yarn/unplugged/expo-virtual-6e31b94ab5/node_modules/expo/",\
         "packageDependencies": [\
           ["expo", "npm:54.0.21"]\
         ],\
         "linkType": "SOFT"\
+      }],\
+      ["virtual:bbeb22238bbd80aee0a2f4be36418a0d665d7c69dbb463c39c890daa57836010a0c1ec5332859eacae1427e0c36cc9bbd8b9b5f7fe7d8f8dbba6745fa8071d17#npm:54.0.21", {\
+        "packageLocation": "./.yarn/unplugged/expo-virtual-6e31b94ab5/node_modules/expo/",\
+        "packageDependencies": [\
+          ["@babel/runtime", "npm:7.28.4"],\
+          ["@expo/cli", "virtual:6e31b94ab5e2608b387e78631be1b699be0bca453eab815edf3b6bfe8e7f269425ea63fbc9482f025aea8688770e348b9b36ae8d2fcf97256693edc23b68ba0f#npm:54.0.14"],\
+          ["@expo/config", "npm:12.0.10"],\
+          ["@expo/config-plugins", "npm:54.0.2"],\
+          ["@expo/devtools", "virtual:6e31b94ab5e2608b387e78631be1b699be0bca453eab815edf3b6bfe8e7f269425ea63fbc9482f025aea8688770e348b9b36ae8d2fcf97256693edc23b68ba0f#npm:0.1.7"],\
+          ["@expo/dom-webview", null],\
+          ["@expo/fingerprint", "npm:0.15.2"],\
+          ["@expo/metro", "npm:54.1.0"],\
+          ["@expo/metro-config", "virtual:6e31b94ab5e2608b387e78631be1b699be0bca453eab815edf3b6bfe8e7f269425ea63fbc9482f025aea8688770e348b9b36ae8d2fcf97256693edc23b68ba0f#npm:54.0.8"],\
+          ["@expo/metro-runtime", null],\
+          ["@expo/vector-icons", "virtual:6e31b94ab5e2608b387e78631be1b699be0bca453eab815edf3b6bfe8e7f269425ea63fbc9482f025aea8688770e348b9b36ae8d2fcf97256693edc23b68ba0f#npm:15.0.3"],\
+          ["@types/expo__dom-webview", null],\
+          ["@types/expo__metro-runtime", null],\
+          ["@types/react", null],\
+          ["@types/react-native", null],\
+          ["@types/react-native-webview", null],\
+          ["@ungap/structured-clone", "npm:1.3.0"],\
+          ["babel-preset-expo", "virtual:6e31b94ab5e2608b387e78631be1b699be0bca453eab815edf3b6bfe8e7f269425ea63fbc9482f025aea8688770e348b9b36ae8d2fcf97256693edc23b68ba0f#npm:54.0.6"],\
+          ["expo", "virtual:bbeb22238bbd80aee0a2f4be36418a0d665d7c69dbb463c39c890daa57836010a0c1ec5332859eacae1427e0c36cc9bbd8b9b5f7fe7d8f8dbba6745fa8071d17#npm:54.0.21"],\
+          ["expo-asset", "virtual:6e31b94ab5e2608b387e78631be1b699be0bca453eab815edf3b6bfe8e7f269425ea63fbc9482f025aea8688770e348b9b36ae8d2fcf97256693edc23b68ba0f#npm:12.0.9"],\
+          ["expo-constants", "virtual:6e31b94ab5e2608b387e78631be1b699be0bca453eab815edf3b6bfe8e7f269425ea63fbc9482f025aea8688770e348b9b36ae8d2fcf97256693edc23b68ba0f#npm:18.0.10"],\
+          ["expo-file-system", "virtual:6e31b94ab5e2608b387e78631be1b699be0bca453eab815edf3b6bfe8e7f269425ea63fbc9482f025aea8688770e348b9b36ae8d2fcf97256693edc23b68ba0f#npm:19.0.17"],\
+          ["expo-font", "virtual:6e31b94ab5e2608b387e78631be1b699be0bca453eab815edf3b6bfe8e7f269425ea63fbc9482f025aea8688770e348b9b36ae8d2fcf97256693edc23b68ba0f#npm:14.0.9"],\
+          ["expo-keep-awake", "virtual:6e31b94ab5e2608b387e78631be1b699be0bca453eab815edf3b6bfe8e7f269425ea63fbc9482f025aea8688770e348b9b36ae8d2fcf97256693edc23b68ba0f#npm:15.0.7"],\
+          ["expo-modules-autolinking", "npm:3.0.19"],\
+          ["expo-modules-core", "virtual:6e31b94ab5e2608b387e78631be1b699be0bca453eab815edf3b6bfe8e7f269425ea63fbc9482f025aea8688770e348b9b36ae8d2fcf97256693edc23b68ba0f#npm:3.0.23"],\
+          ["pretty-format", "npm:29.7.0"],\
+          ["react", null],\
+          ["react-native", null],\
+          ["react-native-webview", null],\
+          ["react-refresh", "npm:0.14.2"],\
+          ["whatwg-url-without-unicode", "npm:8.0.0-3"]\
+        ],\
+        "packagePeers": [\
+          "@expo/dom-webview",\
+          "@expo/metro-runtime",\
+          "@types/expo__dom-webview",\
+          "@types/expo__metro-runtime",\
+          "@types/react-native-webview",\
+          "@types/react-native",\
+          "@types/react",\
+          "react-native-webview",\
+          "react-native",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
       }],\
       ["virtual:e1e33b94dcd55347b265dbd43673c609ad9289184d04ca461014a1dd3a9af0468a492ba08f92b8c7d31bdf508979b832ea2ae4ce34c84944e0b290190384ce67#npm:54.0.21", {\
         "packageLocation": "./.yarn/unplugged/expo-virtual-a37af0cbb3/node_modules/expo/",\
@@ -6159,11 +6434,34 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["expo-asset", [\
       ["npm:12.0.9", {\
-        "packageLocation": "./.yarn/unplugged/expo-asset-virtual-6af5582161/node_modules/expo-asset/",\
+        "packageLocation": "./.yarn/unplugged/expo-asset-virtual-770569e857/node_modules/expo-asset/",\
         "packageDependencies": [\
           ["expo-asset", "npm:12.0.9"]\
         ],\
         "linkType": "SOFT"\
+      }],\
+      ["virtual:6e31b94ab5e2608b387e78631be1b699be0bca453eab815edf3b6bfe8e7f269425ea63fbc9482f025aea8688770e348b9b36ae8d2fcf97256693edc23b68ba0f#npm:12.0.9", {\
+        "packageLocation": "./.yarn/unplugged/expo-asset-virtual-770569e857/node_modules/expo-asset/",\
+        "packageDependencies": [\
+          ["@expo/image-utils", "npm:0.8.7"],\
+          ["@types/expo", null],\
+          ["@types/react", null],\
+          ["@types/react-native", null],\
+          ["expo", "virtual:bbeb22238bbd80aee0a2f4be36418a0d665d7c69dbb463c39c890daa57836010a0c1ec5332859eacae1427e0c36cc9bbd8b9b5f7fe7d8f8dbba6745fa8071d17#npm:54.0.21"],\
+          ["expo-asset", "virtual:6e31b94ab5e2608b387e78631be1b699be0bca453eab815edf3b6bfe8e7f269425ea63fbc9482f025aea8688770e348b9b36ae8d2fcf97256693edc23b68ba0f#npm:12.0.9"],\
+          ["expo-constants", "virtual:6e31b94ab5e2608b387e78631be1b699be0bca453eab815edf3b6bfe8e7f269425ea63fbc9482f025aea8688770e348b9b36ae8d2fcf97256693edc23b68ba0f#npm:18.0.10"],\
+          ["react", null],\
+          ["react-native", null]\
+        ],\
+        "packagePeers": [\
+          "@types/expo",\
+          "@types/react-native",\
+          "@types/react",\
+          "expo",\
+          "react-native",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
       }],\
       ["virtual:a37af0cbb37a28d12847e2c2ccc033b79f493b2467dae26f1bd1a3aef4b1f62fcbf7f7d9acbebd9ed07c5eab6ad1c87cc4741b5a0dfd55bba2d054e8c7d9ac24#npm:12.0.9", {\
         "packageLocation": "./.yarn/unplugged/expo-asset-virtual-6af5582161/node_modules/expo-asset/",\
@@ -6191,11 +6489,30 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["expo-constants", [\
       ["npm:18.0.10", {\
-        "packageLocation": "./.yarn/unplugged/expo-constants-virtual-6adfb12362/node_modules/expo-constants/",\
+        "packageLocation": "./.yarn/unplugged/expo-constants-virtual-8e3c3e33d1/node_modules/expo-constants/",\
         "packageDependencies": [\
           ["expo-constants", "npm:18.0.10"]\
         ],\
         "linkType": "SOFT"\
+      }],\
+      ["virtual:6e31b94ab5e2608b387e78631be1b699be0bca453eab815edf3b6bfe8e7f269425ea63fbc9482f025aea8688770e348b9b36ae8d2fcf97256693edc23b68ba0f#npm:18.0.10", {\
+        "packageLocation": "./.yarn/unplugged/expo-constants-virtual-8e3c3e33d1/node_modules/expo-constants/",\
+        "packageDependencies": [\
+          ["@expo/config", "npm:12.0.10"],\
+          ["@expo/env", "npm:2.0.7"],\
+          ["@types/expo", null],\
+          ["@types/react-native", null],\
+          ["expo", "virtual:bbeb22238bbd80aee0a2f4be36418a0d665d7c69dbb463c39c890daa57836010a0c1ec5332859eacae1427e0c36cc9bbd8b9b5f7fe7d8f8dbba6745fa8071d17#npm:54.0.21"],\
+          ["expo-constants", "virtual:6e31b94ab5e2608b387e78631be1b699be0bca453eab815edf3b6bfe8e7f269425ea63fbc9482f025aea8688770e348b9b36ae8d2fcf97256693edc23b68ba0f#npm:18.0.10"],\
+          ["react-native", null]\
+        ],\
+        "packagePeers": [\
+          "@types/expo",\
+          "@types/react-native",\
+          "expo",\
+          "react-native"\
+        ],\
+        "linkType": "HARD"\
       }],\
       ["virtual:a37af0cbb37a28d12847e2c2ccc033b79f493b2467dae26f1bd1a3aef4b1f62fcbf7f7d9acbebd9ed07c5eab6ad1c87cc4741b5a0dfd55bba2d054e8c7d9ac24#npm:18.0.10", {\
         "packageLocation": "./.yarn/unplugged/expo-constants-virtual-6adfb12362/node_modules/expo-constants/",\
@@ -6219,11 +6536,28 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["expo-file-system", [\
       ["npm:19.0.17", {\
-        "packageLocation": "./.yarn/unplugged/expo-file-system-virtual-529436a192/node_modules/expo-file-system/",\
+        "packageLocation": "./.yarn/unplugged/expo-file-system-virtual-66f6f79dbc/node_modules/expo-file-system/",\
         "packageDependencies": [\
           ["expo-file-system", "npm:19.0.17"]\
         ],\
         "linkType": "SOFT"\
+      }],\
+      ["virtual:6e31b94ab5e2608b387e78631be1b699be0bca453eab815edf3b6bfe8e7f269425ea63fbc9482f025aea8688770e348b9b36ae8d2fcf97256693edc23b68ba0f#npm:19.0.17", {\
+        "packageLocation": "./.yarn/unplugged/expo-file-system-virtual-66f6f79dbc/node_modules/expo-file-system/",\
+        "packageDependencies": [\
+          ["@types/expo", null],\
+          ["@types/react-native", null],\
+          ["expo", "virtual:bbeb22238bbd80aee0a2f4be36418a0d665d7c69dbb463c39c890daa57836010a0c1ec5332859eacae1427e0c36cc9bbd8b9b5f7fe7d8f8dbba6745fa8071d17#npm:54.0.21"],\
+          ["expo-file-system", "virtual:6e31b94ab5e2608b387e78631be1b699be0bca453eab815edf3b6bfe8e7f269425ea63fbc9482f025aea8688770e348b9b36ae8d2fcf97256693edc23b68ba0f#npm:19.0.17"],\
+          ["react-native", null]\
+        ],\
+        "packagePeers": [\
+          "@types/expo",\
+          "@types/react-native",\
+          "expo",\
+          "react-native"\
+        ],\
+        "linkType": "HARD"\
       }],\
       ["virtual:a37af0cbb37a28d12847e2c2ccc033b79f493b2467dae26f1bd1a3aef4b1f62fcbf7f7d9acbebd9ed07c5eab6ad1c87cc4741b5a0dfd55bba2d054e8c7d9ac24#npm:19.0.17", {\
         "packageLocation": "./.yarn/unplugged/expo-file-system-virtual-529436a192/node_modules/expo-file-system/",\
@@ -6245,11 +6579,33 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["expo-font", [\
       ["npm:14.0.9", {\
-        "packageLocation": "./.yarn/unplugged/expo-font-virtual-526bf12775/node_modules/expo-font/",\
+        "packageLocation": "./.yarn/unplugged/expo-font-virtual-185377c9e1/node_modules/expo-font/",\
         "packageDependencies": [\
           ["expo-font", "npm:14.0.9"]\
         ],\
         "linkType": "SOFT"\
+      }],\
+      ["virtual:6e31b94ab5e2608b387e78631be1b699be0bca453eab815edf3b6bfe8e7f269425ea63fbc9482f025aea8688770e348b9b36ae8d2fcf97256693edc23b68ba0f#npm:14.0.9", {\
+        "packageLocation": "./.yarn/unplugged/expo-font-virtual-185377c9e1/node_modules/expo-font/",\
+        "packageDependencies": [\
+          ["@types/expo", null],\
+          ["@types/react", null],\
+          ["@types/react-native", null],\
+          ["expo", "virtual:bbeb22238bbd80aee0a2f4be36418a0d665d7c69dbb463c39c890daa57836010a0c1ec5332859eacae1427e0c36cc9bbd8b9b5f7fe7d8f8dbba6745fa8071d17#npm:54.0.21"],\
+          ["expo-font", "virtual:6e31b94ab5e2608b387e78631be1b699be0bca453eab815edf3b6bfe8e7f269425ea63fbc9482f025aea8688770e348b9b36ae8d2fcf97256693edc23b68ba0f#npm:14.0.9"],\
+          ["fontfaceobserver", "npm:2.3.0"],\
+          ["react", null],\
+          ["react-native", null]\
+        ],\
+        "packagePeers": [\
+          "@types/expo",\
+          "@types/react-native",\
+          "@types/react",\
+          "expo",\
+          "react-native",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
       }],\
       ["virtual:a37af0cbb37a28d12847e2c2ccc033b79f493b2467dae26f1bd1a3aef4b1f62fcbf7f7d9acbebd9ed07c5eab6ad1c87cc4741b5a0dfd55bba2d054e8c7d9ac24#npm:14.0.9", {\
         "packageLocation": "./.yarn/unplugged/expo-font-virtual-526bf12775/node_modules/expo-font/",\
@@ -6276,11 +6632,28 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["expo-keep-awake", [\
       ["npm:15.0.7", {\
-        "packageLocation": "./.yarn/unplugged/expo-keep-awake-virtual-91b720a82f/node_modules/expo-keep-awake/",\
+        "packageLocation": "./.yarn/unplugged/expo-keep-awake-virtual-e4c5b63640/node_modules/expo-keep-awake/",\
         "packageDependencies": [\
           ["expo-keep-awake", "npm:15.0.7"]\
         ],\
         "linkType": "SOFT"\
+      }],\
+      ["virtual:6e31b94ab5e2608b387e78631be1b699be0bca453eab815edf3b6bfe8e7f269425ea63fbc9482f025aea8688770e348b9b36ae8d2fcf97256693edc23b68ba0f#npm:15.0.7", {\
+        "packageLocation": "./.yarn/unplugged/expo-keep-awake-virtual-e4c5b63640/node_modules/expo-keep-awake/",\
+        "packageDependencies": [\
+          ["@types/expo", null],\
+          ["@types/react", null],\
+          ["expo", "virtual:bbeb22238bbd80aee0a2f4be36418a0d665d7c69dbb463c39c890daa57836010a0c1ec5332859eacae1427e0c36cc9bbd8b9b5f7fe7d8f8dbba6745fa8071d17#npm:54.0.21"],\
+          ["expo-keep-awake", "virtual:6e31b94ab5e2608b387e78631be1b699be0bca453eab815edf3b6bfe8e7f269425ea63fbc9482f025aea8688770e348b9b36ae8d2fcf97256693edc23b68ba0f#npm:15.0.7"],\
+          ["react", null]\
+        ],\
+        "packagePeers": [\
+          "@types/expo",\
+          "@types/react",\
+          "expo",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
       }],\
       ["virtual:a37af0cbb37a28d12847e2c2ccc033b79f493b2467dae26f1bd1a3aef4b1f62fcbf7f7d9acbebd9ed07c5eab6ad1c87cc4741b5a0dfd55bba2d054e8c7d9ac24#npm:15.0.7", {\
         "packageLocation": "./.yarn/unplugged/expo-keep-awake-virtual-91b720a82f/node_modules/expo-keep-awake/",\
@@ -6317,11 +6690,29 @@ const RAW_RUNTIME_STATE =
     ]],\
     ["expo-modules-core", [\
       ["npm:3.0.23", {\
-        "packageLocation": "./.yarn/unplugged/expo-modules-core-virtual-409b826876/node_modules/expo-modules-core/",\
+        "packageLocation": "./.yarn/unplugged/expo-modules-core-virtual-b54569c5ef/node_modules/expo-modules-core/",\
         "packageDependencies": [\
           ["expo-modules-core", "npm:3.0.23"]\
         ],\
         "linkType": "SOFT"\
+      }],\
+      ["virtual:6e31b94ab5e2608b387e78631be1b699be0bca453eab815edf3b6bfe8e7f269425ea63fbc9482f025aea8688770e348b9b36ae8d2fcf97256693edc23b68ba0f#npm:3.0.23", {\
+        "packageLocation": "./.yarn/unplugged/expo-modules-core-virtual-b54569c5ef/node_modules/expo-modules-core/",\
+        "packageDependencies": [\
+          ["@types/react", null],\
+          ["@types/react-native", null],\
+          ["expo-modules-core", "virtual:6e31b94ab5e2608b387e78631be1b699be0bca453eab815edf3b6bfe8e7f269425ea63fbc9482f025aea8688770e348b9b36ae8d2fcf97256693edc23b68ba0f#npm:3.0.23"],\
+          ["invariant", "npm:2.2.4"],\
+          ["react", null],\
+          ["react-native", null]\
+        ],\
+        "packagePeers": [\
+          "@types/react-native",\
+          "@types/react",\
+          "react-native",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
       }],\
       ["virtual:a37af0cbb37a28d12847e2c2ccc033b79f493b2467dae26f1bd1a3aef4b1f62fcbf7f7d9acbebd9ed07c5eab6ad1c87cc4741b5a0dfd55bba2d054e8c7d9ac24#npm:3.0.23", {\
         "packageLocation": "./.yarn/unplugged/expo-modules-core-virtual-409b826876/node_modules/expo-modules-core/",\

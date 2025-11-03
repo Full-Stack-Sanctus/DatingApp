@@ -3507,6 +3507,7 @@ __metadata:
     babel-plugin-module-resolver: "npm:^5.0.2"
     eslint: "npm:^2.13.1"
     eslint-plugin-react: "npm:^4.3.0"
+    expo: "npm:^54.0.21"
     shared: "workspace:*"
   languageName: unknown
   linkType: soft
