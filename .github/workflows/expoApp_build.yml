@@ -48,7 +48,10 @@ jobs:
 
       # Add root node_modules/.bin to PATH
       - name: ➕ Add Node bin to PATH
-        run: echo "${{ github.workspace }}/node_modules/.bin" >> $GITHUB_PATH
+        run: |
+          echo "${{ github.workspace }}/node_modules/.bin" >> $GITHUB_PATH
+          echo "$(which node)"  # Debug check
+          node -v
 
       # 6️⃣ Setup Java & Gradle
       - name: ☕ Setup Java
@@ -71,8 +74,14 @@ jobs:
       # 8️⃣ Expo Prebuild Android
       - name: 📱 Expo Prebuild Android
         working-directory: ${{ env.APP_DIR }}
-        run: npx expo prebuild --platform android --non-interactive --no-install
-
+        run: |
+          npx expo prebuild --platform android --non-interactive
+          yarn android:prebuild || true
+      
+      - name: 🧩 Reinstall after prebuild
+        working-directory: ${{ env.APP_DIR }}
+        run: yarn install --frozen-lockfile
+  
       # 9️⃣ Restore Android keystore
       - name: 🔐 Restore Keystore
         working-directory: ${{ env.APP_DIR }}/android
