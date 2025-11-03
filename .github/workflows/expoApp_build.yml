@@ -75,7 +75,7 @@ jobs:
       - name: 📱 Expo Prebuild Android
         working-directory: ${{ env.APP_DIR }}
         run: |
-          npx expo prebuild --platform android --non-interactive
+          npx expo prebuild --platform android --non-interactive --no-install
           yarn android:prebuild || true
       
       - name: 🧩 Reinstall after prebuild
