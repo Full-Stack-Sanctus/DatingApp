@@ -22,7 +22,7 @@ jobs:
       - name: ⚙️ Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 20.19.5
 
       # 3️⃣ Enable Yarn (Classic 1.22.22 for maximum Expo compatibility)
       - name: 🧶 Setup Yarn 1
