@@ -87,7 +87,7 @@ jobs:
         working-directory: ${{ env.APP_DIR }}
         run: |
           export CI=1
-          yarn install expo
+          yarn add expo
           npx expo prebuild --platform android --no-install
           yarn android:prebuild || true
   
