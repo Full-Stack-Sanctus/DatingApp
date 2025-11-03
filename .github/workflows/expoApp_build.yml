@@ -82,11 +82,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
       
-      - name: 🧩 Ensure Expo SDK is installed
+      - name: 🧩 Ensure Expo is available for build
+        working-directory: ${{ env.APP_DIR }}
         run: |
-          echo "Installing Expo SDK in mobile workspace"
-          cd apps/mobile/datingapp-mobile
-          yarn add expo@^54.0.21 react@18.2.0 react-native@0.74.1 --ignore-engines
+          echo "📦 Installing Expo SDK for Yarn Berry"
+          yarn up expo@^51.0.0 react@18.2.0 react-native@0.74.1 --recursive --mode=update-lockfile
+
     
       # 8️⃣ Expo Prebuild Android
       - name: 📱 Expo Prebuild Android
