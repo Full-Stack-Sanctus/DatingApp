@@ -25,10 +25,11 @@ jobs:
           node-version: 20.19.5
 
       # 3️⃣ Enable Yarn (Classic 1.22.22 for maximum Expo compatibility)
-      - name: 🧶 Setup Yarn 1
+      - name: 🧶 Set up Yarn Berry
         run: |
           corepack enable
-          corepack prepare yarn@1.22.22 --activate
+          corepack prepare yarn@stable --activate
+          yarn set version stable
           yarn -v
 
       # 4️⃣ Cache Yarn dependencies
