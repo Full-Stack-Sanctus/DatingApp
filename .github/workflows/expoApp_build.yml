@@ -46,7 +46,7 @@ jobs:
       - name: 🔍 Check Yarn workspaces
         run: |
           yarn cache clean
-          yarn workspaces info
+          yarn workspaces list
 
       # 5️⃣ Install dependencies (root)
       - name: 📦 Install dependencies (safe flexible)
