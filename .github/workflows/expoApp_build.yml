@@ -41,6 +41,10 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
+      
+      - name: 🔍 Check Yarn workspaces
+        run: |
+          yarn workspaces info
 
       # 5️⃣ Install dependencies (root)
       - name: 📦 Install dependencies (safe flexible)
