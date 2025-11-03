@@ -52,9 +52,9 @@ jobs:
       - name: 📦 Install dependencies (safe flexible)
         run: |
           if [ -f yarn.lock ]; then
-            yarn install
-          else
             yarn install --immutable
+          else
+            yarn install
           fi
 
       # Add root node_modules/.bin to PATH
