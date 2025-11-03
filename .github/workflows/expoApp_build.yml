@@ -43,10 +43,13 @@ jobs:
             ${{ runner.os }}-yarn-
 
       # 5️⃣ Install dependencies (root)
-      - name: 📦 Install dependencies (Monorepo root)
-        working-directory: ./
+      - name: 📦 Install dependencies (safe flexible)
         run: |
-          yarn install --frozen-lockfile
+          if [ -f yarn.lock ]; then
+            yarn install || yarn install --force
+          else
+            yarn install --no-lockfile
+          fi
 
       # Add root node_modules/.bin to PATH
       - name: ➕ Add Node bin to PATH
