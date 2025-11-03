@@ -44,6 +44,7 @@ jobs:
       
       - name: 🔍 Check Yarn workspaces
         run: |
+          yarn cache clean
           yarn workspaces info
 
       # 5️⃣ Install dependencies (root)
