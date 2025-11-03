@@ -86,7 +86,8 @@ jobs:
       - name: 📱 Expo Prebuild Android
         working-directory: ${{ env.APP_DIR }}
         run: |
-          npx expo prebuild --platform android --non-interactive --no-install
+           export CI=1
+           npx expo prebuild --platform android --no-install
           yarn android:prebuild || true
   
       # 9️⃣ Restore Android keystore
