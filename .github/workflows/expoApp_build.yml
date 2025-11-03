@@ -81,13 +81,18 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/android/build.gradle') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
-
+      
+      - name: 🧩 Ensure Expo SDK is installed
+        run: |
+          echo "Installing Expo SDK in mobile workspace"
+          cd apps/mobile/datingapp-mobile
+          yarn add expo@^54.0.21 react@18.2.0 react-native@0.74.1 --ignore-engines
+    
       # 8️⃣ Expo Prebuild Android
       - name: 📱 Expo Prebuild Android
         working-directory: ${{ env.APP_DIR }}
         run: |
           export CI=1
-          yarn add expo
           npx expo prebuild --platform android --no-install
           yarn android:prebuild || true
   
