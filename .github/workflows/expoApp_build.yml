@@ -79,10 +79,6 @@ jobs:
         run: |
           npx expo prebuild --platform android --non-interactive --no-install
           yarn android:prebuild || true
-      
-      - name: 🧩 Reinstall after prebuild
-        working-directory: ${{ env.APP_DIR }}
-        run: yarn install --frozen-lockfile
   
       # 9️⃣ Restore Android keystore
       - name: 🔐 Restore Keystore
