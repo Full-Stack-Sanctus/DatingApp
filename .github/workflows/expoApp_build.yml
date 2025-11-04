@@ -86,7 +86,7 @@ jobs:
         working-directory: ${{ env.APP_DIR }}
         run: |
           echo "📦 Installing Expo SDK for Yarn Berry"
-          yarn up expo@^51.0.0 react@18.2.0 react-native@0.74.1 --recursive --mode=update-lockfile
+          yarn up expo@51.0.0 react@18.2.0 react-native@0.74.1 --mode=update-lockfile
 
     
       # 8️⃣ Expo Prebuild Android
