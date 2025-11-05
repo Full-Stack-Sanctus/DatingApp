@@ -18,7 +18,7 @@
   "dependencies": {
     "expo": "^54.0.22",
     "react": "18.2.0",
-    "react-native": "0.74.1",
+    "react-native": "0.82.1",
     "shared": "workspace:*"
   },
   "devDependencies": {
