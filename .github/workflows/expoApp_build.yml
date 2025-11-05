@@ -87,7 +87,10 @@ jobs:
         run: |
           echo "📦 Installing Expo SDK for Yarn Berry"
           yarn up expo@51.0.0 react@18.2.0 react-native@0.74.1 --mode=update-lockfile
-
+      
+      - name: 🧱 Upgrade Gradle wrapper
+        run: |
+          sed -i 's/gradle-[0-9.]*-bin.zip/gradle-8.6-bin.zip/' android/gradle/wrapper/gradle-wrapper.properties
     
       # 8️⃣ Expo Prebuild Android
       - name: 📱 Expo Prebuild Android
