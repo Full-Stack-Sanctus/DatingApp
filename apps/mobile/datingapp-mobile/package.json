@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "main": "App.js",
+  "android:prebuild": "expo prebuild --platform android",
   "keywords": [
     "react-component",
     "react-native",
