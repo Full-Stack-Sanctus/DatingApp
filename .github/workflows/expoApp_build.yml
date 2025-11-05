@@ -116,7 +116,9 @@ jobs:
       # 🔟 Build Release APK
       - name: 🏗️ Build APK
         working-directory: ${{ env.APP_DIR }}/android
-        run: ./gradlew assembleRelease
+        run: |
+          ./gradlew clean
+          ./gradlew assembleRelease --stacktrace
 
       # 1️⃣1️⃣ Upload APK as artifact
       - name: 📦 Upload artifact
