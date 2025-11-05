@@ -100,6 +100,25 @@ jobs:
         working-directory: ${{ env.APP_DIR }}
         run: |
           sed -i 's/gradle-[0-9.]*-bin.zip/gradle-8.6-bin.zip/' android/gradle/wrapper/gradle-wrapper.properties
+      
+      - name: 🧰 Force Kotlin version compatible with Gradle 8.6 (KTS)
+        working-directory: ${{ env.APP_DIR }}
+        run: |
+          FILE_PATH="android/build.gradle.kts"
+          if [ -f "$FILE_PATH" ]; then
+           echo "Updating Kotlin version in $FILE_PATH..."
+           sed -i 's/kotlin("jvm") version ".*"/kotlin("jvm") version "1.9.25"/' "$FILE_PATH"
+          fi
+          
+      - name: 🧩 Patch Expo Gradle plugin Kotlin version
+        run: |
+          PLUGIN_BUILD="apps/mobile/datingapp-mobile/node_modules/expo-modules-autolinking/android/expo-gradle-plugin/build.gradle.kts"
+          if [ -f "$PLUGIN_BUILD" ]; then
+           echo "Patching Kotlin version inside Expo Gradle plugin..."
+           sed -i 's/kotlin("jvm") version ".*"/kotlin("jvm") version "1.9.25"/' "$PLUGIN_BUILD"
+          else
+           echo "Expo Gradle plugin build file not found!"
+          fi
           
       # 9️⃣ Restore Android keystore
       - name: 🔐 Restore Keystore
