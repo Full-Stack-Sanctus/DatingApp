@@ -97,6 +97,7 @@ jobs:
           yarn android:prebuild || true
       
       - name: 🧱 Upgrade Gradle wrapper
+        working-directory: ${{ env.APP_DIR }}
         run: |
           sed -i 's/gradle-[0-9.]*-bin.zip/gradle-8.6-bin.zip/' android/gradle/wrapper/gradle-wrapper.properties
           
