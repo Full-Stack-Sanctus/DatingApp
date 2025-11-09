@@ -112,25 +112,24 @@ jobs:
           
       # Path to the Expo Gradle plugin build files
       # 1️⃣ Force Kotlin plugin 1.9.25 (compatible with Gradle 8.6)
-      # 2️⃣ Add missing Gradle imports to fix 'extensions' and 'extra' references
+      # 2️⃣ Replace unsupported Gradle APIs
       - name: 🩹 Fix Expo Gradle plugin Kotlin compatibility (Gradle 8.6)
         run: |
           PLUGIN_DIR="apps/mobile/datingapp-mobile/node_modules/expo-modules-autolinking/android/expo-gradle-plugin"
           SETTINGS_PLUGIN="$PLUGIN_DIR/expo-autolinking-settings-plugin/src/main/kotlin/expo/modules/plugin/SettingsManager.kt"
 
-          if [ -d "$PLUGIN_DIR" ]; then
-           echo "🔧 Patching Kotlin version in Expo Gradle plugin..."
-           find "$PLUGIN_DIR" -type f -name "build.gradle.kts" -exec sed -i 's/kotlin("jvm") version ".*"/kotlin("jvm") version "1.9.25"/' {} \;
+          if [ -f "$SETTINGS_PLUGIN" ]; then
+            echo "🔧 Patching Kotlin + Gradle compatibility in Expo SettingsManager.kt..."
+            find "$PLUGIN_DIR" -type f -name "build.gradle.kts" -exec sed -i 's/kotlin("jvm") version ".*"/kotlin("jvm") version "1.9.25"/' {} \;
 
-           if [ -f "$SETTINGS_PLUGIN" ]; then
             sed -i 's/extensions\.getByName("gradle")/project.extensions.getByName("gradle")/g' "$SETTINGS_PLUGIN"
             sed -i 's/extra\["expoAutolinking"]/project.extensions.extraProperties["expoAutolinking"]/g' "$SETTINGS_PLUGIN"
-            echo "✅ Kotlin patch applied successfully."
-         
-           else
-            echo "⚠️ Expo Gradle plugin directory not found, skipping patch."
-           fi
-          
+
+            echo "✅ Expo SettingsManager.kt patched for Gradle 8.6"
+          else
+            echo "⚠️ Expo SettingsManager.kt not found; skipping patch."
+          fi
+
       # 9️⃣ Restore Android keystore
       - name: 🔐 Restore Keystore
         working-directory: ${{ env.APP_DIR }}/android
