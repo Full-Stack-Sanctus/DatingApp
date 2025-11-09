@@ -112,8 +112,9 @@ jobs:
           
       # Path to the Expo Gradle plugin build files
       # 1️⃣ Force Kotlin plugin 1.9.25 (compatible with Gradle 8.6)
-      # 2️⃣ Fix imports (add Gradle APIs used in Gradle 8.x)
-      # 3️⃣ Fix old Gradle symbols
+      # 2️⃣ Remove any previously added incorrect imports
+      # 3️⃣ Add imports right after the package declaration (the correct position)
+      # 4️⃣ Fix unresolved references for Gradle 8.6 compatibility
       - name: 🩹 Fix Expo Autolinking Kotlin for Gradle 8.6
         run: |
           set -e
@@ -124,14 +125,19 @@ jobs:
             echo "🔧 Patching Expo SettingsManager.kt for Gradle 8.6..."
             find "$PLUGIN_DIR" -type f -name "build.gradle.kts" -exec sed -i 's/kotlin("jvm") version ".*"/kotlin("jvm") version "1.9.25"/' {} \;
 
-            sed -i '/package expo.modules.plugin/a\
-          import org.gradle.api.Project\
-          import org.gradle.api.plugins.ExtraPropertiesExtension\
-          import org.gradle.api.plugins.ExtensionContainer\
-          import org.gradle.kotlin.dsl.extra' "$FILE"
+            sed -i '/^import org\.gradle\.api\.Project/d' "$FILE"
+            sed -i '/^import org\.gradle\.api\.plugins\.ExtraPropertiesExtension/d' "$FILE"
+            sed -i '/^import org\.gradle\.api\.plugins\.ExtensionContainer/d' "$FILE"
+            sed -i '/^import org\.gradle\.kotlin\.dsl\.extra/d' "$FILE"
 
-            sed -i 's/extensions\./(this as Project).extensions./g' "$FILE"
-            sed -i 's/\([^[:alnum:]_]\)extra\[/\1(this as Project).extra\[/g' "$FILE"
+            sed -i '/^package expo\.modules\.plugin/a\
+            import org.gradle.api.initialization.Settings\
+            import org.gradle.api.plugins.ExtraPropertiesExtension\
+            import org.gradle.kotlin.dsl.extra\
+            ' "$FILE"
+
+            sed -i 's/extensions\.extraProperties/settings.extensions.extraProperties/g' "$FILE"
+            sed -i 's/\([^[:alnum:]_]\)extra\[/\1settings.extensions.extraProperties\[/g' "$FILE"
 
             echo "✅ Kotlin compatibility patch applied successfully."
           else
