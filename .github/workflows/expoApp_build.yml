@@ -124,18 +124,13 @@ jobs:
 
            SETTINGS_PLUGIN="$PLUGIN_DIR/expo-autolinking-settings-plugin/src/main/kotlin/expo/modules/plugin/SettingsManager.kt"
            if [ -f "$SETTINGS_PLUGIN" ]; then
-            echo "📄 Inserting Gradle imports in SettingsManager.kt"
-            awk '
-             NR==1 { print; next } 
-             /^package / { print; print "import org.gradle.api.plugins.ExtensionAware"; print "import org.gradle.api.plugins.ExtraPropertiesExtension"; next }
-             { print }
-            ' "$SETTINGS_PLUGIN" > "$SETTINGS_PLUGIN.tmp" && mv "$SETTINGS_PLUGIN.tmp" "$SETTINGS_PLUGIN"
-           fi
-           echo "✅ Kotlin patch applied successfully."
+            sed -i 's/extensions\.getByName("gradle")/project.extensions.getByName("gradle")/g' "$SETTINGS_PLUGIN"
+            sed -i 's/extra\["expoAutolinking"]/project.extensions.extraProperties["expoAutolinking"]/g' "$SETTINGS_PLUGIN"
+            echo "✅ Kotlin patch applied successfully."
          
-          else
-           echo "⚠️ Expo Gradle plugin directory not found, skipping patch."
-          fi
+           else
+            echo "⚠️ Expo Gradle plugin directory not found, skipping patch."
+           fi
           
       # 9️⃣ Restore Android keystore
       - name: 🔐 Restore Keystore
