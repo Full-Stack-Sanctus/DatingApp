@@ -110,39 +110,22 @@ jobs:
            sed -i 's/kotlin("jvm") version ".*"/kotlin("jvm") version "1.9.25"/' "$FILE_PATH"
           fi
           
-      # Path to the Expo Gradle plugin build files
-      # 1️⃣ Force Kotlin plugin 1.9.25 (compatible with Gradle 8.6)
-      # 2️⃣ Remove any previously added incorrect imports
-      # 3️⃣ Add imports right after the package declaration (the correct position)
-      # 4️⃣ Fix unresolved references for Gradle 8.6 compatibility
-      - name: 🩹 Fix Expo Autolinking Kotlin for Gradle 8.6
+      - name: 🧩 Check for SettingsManager.kt
         run: |
-          set -e
-          PLUGIN_DIR="apps/mobile/datingapp-mobile/node_modules/expo-modules-autolinking/android/expo-gradle-plugin"
-          FILE="$PLUGIN_DIR/expo-autolinking-settings-plugin/src/main/kotlin/expo/modules/plugin/SettingsManager.kt"
-
-          if [ -f "$FILE" ]; then
-            echo "🔧 Patching Expo SettingsManager.kt for Gradle 8.6..."
-            find "$PLUGIN_DIR" -type f -name "build.gradle.kts" -exec sed -i 's/kotlin("jvm") version ".*"/kotlin("jvm") version "1.9.25"/' {} \;
-
-            sed -i '/^import org\.gradle\.api\.Project/d' "$FILE"
-            sed -i '/^import org\.gradle\.api\.plugins\.ExtraPropertiesExtension/d' "$FILE"
-            sed -i '/^import org\.gradle\.api\.plugins\.ExtensionContainer/d' "$FILE"
-            sed -i '/^import org\.gradle\.kotlin\.dsl\.extra/d' "$FILE"
-
-            sed -i '/^package expo\.modules\.plugin/a\
-            import org.gradle.api.initialization.Settings\
-            import org.gradle.api.plugins.ExtraPropertiesExtension\
-            import org.gradle.kotlin.dsl.extra\
-            ' "$FILE"
-
-            sed -i 's/extensions\.extraProperties/settings.extensions.extraProperties/g' "$FILE"
-            sed -i 's/\([^[:alnum:]_]\)extra\[/\1settings.extensions.extraProperties\[/g' "$FILE"
-
-            echo "✅ Kotlin compatibility patch applied successfully."
+          FILE_PATH="apps/mobile/datingapp-mobile/node_modules/expo-modules-autolinking/android/expo-gradle-plugin/expo-autolinking-settings-plugin/src/main/kotlin/expo/modules/plugin/SettingsManager.kt"
+          if [ -f "$FILE_PATH" ]; then
+            echo "✅ File found at $FILE_PATH"
+            mkdir -p artifact
+            cp "$FILE_PATH" artifact/
           else
-            echo "⚠️ Expo SettingsManager.kt not found; skipping patch."
+            echo "❌ File not found at $FILE_PATH"
           fi
+
+      - name: 📦 Upload SettingsManager artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: SettingsManager
+          path: artifact/
 
       # 9️⃣ Restore Android keystore
       - name: 🔐 Restore Keystore
