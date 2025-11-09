@@ -112,20 +112,28 @@ jobs:
           
       # Path to the Expo Gradle plugin build files
       # 1️⃣ Force Kotlin plugin 1.9.25 (compatible with Gradle 8.6)
-      # 2️⃣ Replace unsupported Gradle APIs
-      - name: 🩹 Fix Expo Gradle plugin Kotlin compatibility (Gradle 8.6)
+      # 2️⃣ Fix imports (add Gradle APIs used in Gradle 8.x)
+      # 3️⃣ Fix old Gradle symbols
+      - name: 🩹 Fix Expo Autolinking Kotlin for Gradle 8.6
         run: |
+          set -e
           PLUGIN_DIR="apps/mobile/datingapp-mobile/node_modules/expo-modules-autolinking/android/expo-gradle-plugin"
-          SETTINGS_PLUGIN="$PLUGIN_DIR/expo-autolinking-settings-plugin/src/main/kotlin/expo/modules/plugin/SettingsManager.kt"
+          FILE="$PLUGIN_DIR/expo-autolinking-settings-plugin/src/main/kotlin/expo/modules/plugin/SettingsManager.kt"
 
-          if [ -f "$SETTINGS_PLUGIN" ]; then
-            echo "🔧 Patching Kotlin + Gradle compatibility in Expo SettingsManager.kt..."
+          if [ -f "$FILE" ]; then
+            echo "🔧 Patching Expo SettingsManager.kt for Gradle 8.6..."
             find "$PLUGIN_DIR" -type f -name "build.gradle.kts" -exec sed -i 's/kotlin("jvm") version ".*"/kotlin("jvm") version "1.9.25"/' {} \;
 
-            sed -i 's/extensions\.getByName("gradle")/project.extensions.getByName("gradle")/g' "$SETTINGS_PLUGIN"
-            sed -i 's/extra\["expoAutolinking"]/project.extensions.extraProperties["expoAutolinking"]/g' "$SETTINGS_PLUGIN"
+            sed -i '/package expo.modules.plugin/a\
+          import org.gradle.api.Project\
+          import org.gradle.api.plugins.ExtraPropertiesExtension\
+          import org.gradle.api.plugins.ExtensionContainer\
+          import org.gradle.kotlin.dsl.extra' "$FILE"
 
-            echo "✅ Expo SettingsManager.kt patched for Gradle 8.6"
+            sed -i 's/extensions\./(this as Project).extensions./g' "$FILE"
+            sed -i 's/\([^[:alnum:]_]\)extra\[/\1(this as Project).extra\[/g' "$FILE"
+
+            echo "✅ Kotlin compatibility patch applied successfully."
           else
             echo "⚠️ Expo SettingsManager.kt not found; skipping patch."
           fi
