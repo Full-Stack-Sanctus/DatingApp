@@ -124,7 +124,12 @@ jobs:
 
            SETTINGS_PLUGIN="$PLUGIN_DIR/expo-autolinking-settings-plugin/src/main/kotlin/expo/modules/plugin/SettingsManager.kt"
            if [ -f "$SETTINGS_PLUGIN" ]; then
-            sed -i '1s/^/import org.gradle.api.plugins.ExtensionAware\nimport org.gradle.api.plugins.ExtraPropertiesExtension\n/' "$SETTINGS_PLUGIN"
+            echo "📄 Inserting Gradle imports in SettingsManager.kt"
+            awk '
+             NR==1 { print; next } 
+             /^package / { print; print "import org.gradle.api.plugins.ExtensionAware"; print "import org.gradle.api.plugins.ExtraPropertiesExtension"; next }
+             { print }
+            ' "$SETTINGS_PLUGIN" > "$SETTINGS_PLUGIN.tmp" && mv "$SETTINGS_PLUGIN.tmp" "$SETTINGS_PLUGIN"
            fi
            echo "✅ Kotlin patch applied successfully."
          
