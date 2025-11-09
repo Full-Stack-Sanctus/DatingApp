@@ -126,7 +126,15 @@ jobs:
         with:
           name: SettingsManager
           path: artifact/
-
+      
+      - name: 🔧 Pin Gradle and Kotlin for Expo CI
+        run: |
+          cd apps/mobile/datingapp-mobile/android
+          ./gradlew wrapper --gradle-version 8.6
+          echo "org.jetbrains.kotlin.android=1.9.24" >> gradle.properties
+          echo "kotlin.code.style=official" >> gradle.properties
+          echo "kotlin_version=1.9.24" >> gradle.properties
+    
       # 9️⃣ Restore Android keystore
       - name: 🔐 Restore Keystore
         working-directory: ${{ env.APP_DIR }}/android
