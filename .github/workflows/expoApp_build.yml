@@ -96,19 +96,19 @@ jobs:
           npx expo prebuild --platform android --no-install --clean
           yarn android:prebuild || true
       
-      # Due to Expo's incompatibility with ltest gradle and kotlin, we're going to be using gradle 8.4 and kotlin 1.9.23
+      # Due to Expo's incompatibility with ltest gradle and kotlin, we're going to be using gradle 7.5 and kotlin 1.8.22
       - name: 🧱 Upgrade Gradle wrapper
         working-directory: ${{ env.APP_DIR }}
         run: |
-          sed -i 's/gradle-[0-9.]*-bin.zip/gradle-8.4-bin.zip/' android/gradle/wrapper/gradle-wrapper.properties
+          sed -i 's/gradle-[0-9.]*-bin.zip/gradle-7.5-bin.zip/' android/gradle/wrapper/gradle-wrapper.properties
       
-      - name: 🧰 Force Kotlin version compatible with Gradle 8.4 (KTS)
+      - name: 🧰 Force Kotlin version compatible with Gradle 7.5 (KTS)
         working-directory: ${{ env.APP_DIR }}
         run: |
           FILE_PATH="android/build.gradle.kts"
           if [ -f "$FILE_PATH" ]; then
            echo "Updating Kotlin version in $FILE_PATH..."
-           sed -i 's/kotlin("jvm") version ".*"/kotlin("jvm") version "1.9.23"/' "$FILE_PATH"
+           sed -i 's/kotlin("jvm") version ".*"/kotlin("jvm") version "1.8.22"/' "$FILE_PATH"
           fi
           
       - name: 🧩 Check for SettingsManager.kt
@@ -132,11 +132,11 @@ jobs:
         run: |
           cd apps/mobile/datingapp-mobile/android
           ./gradlew clean
-          ./gradlew wrapper --gradle-version 8.4
-          echo "org.jetbrains.kotlin.android=1.9.23" >> gradle.properties
+          ./gradlew wrapper --gradle-version 7.5
+          echo "org.jetbrains.kotlin.android=1.8.22" >> gradle.properties
           echo "kotlin.code.style=official" >> gradle.properties
           echo "kotlin_version=1.9.23" >> gradle.properties
-          echo "androidGradlePluginVersion=8.4.2" >> gradle.properties
+          echo "androidGradlePluginVersion=7.4.0" >> gradle.properties
     
       # 9️⃣ Restore Android keystore
       - name: 🔐 Restore Keystore
