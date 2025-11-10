@@ -27,5 +27,5 @@
     "@types/react-dom": "^19.2.2",
     "@types/react-native": "^0.72.8"
   },
-  "packageManager": "yarn@4.10.3"
+  "packageManager": "yarn@4.11.0"
 }
