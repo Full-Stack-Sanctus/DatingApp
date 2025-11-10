@@ -83,12 +83,12 @@ jobs:
         working-directory: ${{ env.APP_DIR }}/android
         run: |
           # Gradle wrapper
-          ./gradlew wrapper --gradle-version 8.4
+          ./gradlew wrapper --gradle-version 8.1.1
           # Gradle properties
           echo "kotlin.code.style=official" >> gradle.properties
-          echo "kotlinVersion=1.9.24" >> gradle.properties
-          echo "androidGradlePluginVersion=8.3.2" >> gradle.properties
-          echo "org.gradle.kotlin.dsl.provider.compiler.kotlinc.version=1.9.24" >> gradle.properties
+          echo "kotlinVersion=1.8.22" >> gradle.properties
+          echo "androidGradlePluginVersion=8.0.2" >> gradle.properties
+          echo "org.gradle.kotlin.dsl.provider.compiler.kotlinc.version=1.8.22" >> gradle.properties
           echo "org.gradle.kotlin.dsl.provider.reset=true" >> gradle.properties
 
       # 1️⃣1️⃣ Restore Android keystore
