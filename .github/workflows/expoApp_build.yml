@@ -131,6 +131,7 @@ jobs:
       - name: 🔧 Pin Gradle and Kotlin for Expo CI
         run: |
           cd apps/mobile/datingapp-mobile/android
+          ./gradlew clean
           ./gradlew wrapper --gradle-version 8.4
           echo "org.jetbrains.kotlin.android=1.9.23" >> gradle.properties
           echo "kotlin.code.style=official" >> gradle.properties
