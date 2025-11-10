@@ -88,6 +88,7 @@ jobs:
           echo "kotlin.code.style=official" >> gradle.properties
           echo "kotlinVersion=1.9.24" >> gradle.properties
           echo "androidGradlePluginVersion=8.3.2" >> gradle.properties
+          echo "org.gradle.kotlin.dsl.provider.compiler.kotlinc.version=1.9.24" >> gradle.properties
 
       # 1️⃣1️⃣ Restore Android keystore
       - name: Restore Keystore
