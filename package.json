@@ -12,7 +12,7 @@
     "build:web": "yarn workspace datingapp-web build"
   },
   "dependencies": {
-    "expo": "^54.0.21",
+    "expo": "^54.0.23",
     "react-native-web": "^0.21.2"
   },
   "nohoist": [
