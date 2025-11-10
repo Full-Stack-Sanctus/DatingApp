@@ -96,18 +96,19 @@ jobs:
           npx expo prebuild --platform android --no-install --clean
           yarn android:prebuild || true
       
+      # Due to Expo's incompatibility with ltest gradle and kotlin, we're going to be using gradle 8.5.2 and kotlin 1.9.23
       - name: 🧱 Upgrade Gradle wrapper
         working-directory: ${{ env.APP_DIR }}
         run: |
-          sed -i 's/gradle-[0-9.]*-bin.zip/gradle-8.6-bin.zip/' android/gradle/wrapper/gradle-wrapper.properties
+          sed -i 's/gradle-[0-9.]*-bin.zip/gradle-8.5.2-bin.zip/' android/gradle/wrapper/gradle-wrapper.properties
       
-      - name: 🧰 Force Kotlin version compatible with Gradle 8.6 (KTS)
+      - name: 🧰 Force Kotlin version compatible with Gradle 8.5.2 (KTS)
         working-directory: ${{ env.APP_DIR }}
         run: |
           FILE_PATH="android/build.gradle.kts"
           if [ -f "$FILE_PATH" ]; then
            echo "Updating Kotlin version in $FILE_PATH..."
-           sed -i 's/kotlin("jvm") version ".*"/kotlin("jvm") version "1.9.25"/' "$FILE_PATH"
+           sed -i 's/kotlin("jvm") version ".*"/kotlin("jvm") version "1.9.23"/' "$FILE_PATH"
           fi
           
       - name: 🧩 Check for SettingsManager.kt
