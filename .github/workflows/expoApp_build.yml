@@ -134,7 +134,7 @@ jobs:
           ./gradlew wrapper --gradle-version 8.4
           echo "org.jetbrains.kotlin.android=1.9.23" >> gradle.properties
           echo "kotlin.code.style=official" >> gradle.properties
-          echo "kotlin_version=1.9.24" >> gradle.properties
+          echo "kotlin_version=1.9.243" >> gradle.properties
     
       # 9️⃣ Restore Android keystore
       - name: 🔐 Restore Keystore
