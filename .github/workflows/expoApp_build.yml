@@ -101,6 +101,12 @@ jobs:
           keyAlias=${{ secrets.KEY_ALIAS }}
           keyPassword=${{ secrets.KEY_PASSWORD }}
           EOF
+      - name: 🧠 Verify toolchain
+        working-directory: ${{ env.APP_DIR }}/android
+        run: |
+          ./gradlew -v
+          grep kotlinVersion gradle.properties || true
+          java -version
 
       # 1️⃣2️⃣ Build APK
       - name: Build APK
