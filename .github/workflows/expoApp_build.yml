@@ -71,8 +71,14 @@ jobs:
         working-directory: ${{ env.APP_DIR }}
         run: |
           yarn up expo@54.0.23 react@18.2.0 react-native@0.74.1 --mode=update-lockfile
+        
+      # 9️⃣Expo prebuild
+      - name: Expo Prebuild Android
+        working-directory: ${{ env.APP_DIR }}
+        run: |
+          npx expo prebuild --platform android --no-install --clean
 
-      # 9️⃣ Pin Gradle + Kotlin for Expo CI
+      # 🔟  Pin Gradle + Kotlin for Expo CI
       - name: Pin Gradle & Kotlin
         working-directory: ${{ env.APP_DIR }}/android
         run: |
@@ -82,12 +88,6 @@ jobs:
           echo "kotlin.code.style=official" >> gradle.properties
           echo "kotlinVersion=1.8.22" >> gradle.properties
           echo "androidGradlePluginVersion=8.0.2" >> gradle.properties
-
-      # 🔟 Expo prebuild
-      - name: Expo Prebuild Android
-        working-directory: ${{ env.APP_DIR }}
-        run: |
-          npx expo prebuild --platform android --no-install --clean
 
       # 1️⃣1️⃣ Restore Android keystore
       - name: Restore Keystore
