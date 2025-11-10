@@ -96,13 +96,13 @@ jobs:
           npx expo prebuild --platform android --no-install --clean
           yarn android:prebuild || true
       
-      # Due to Expo's incompatibility with ltest gradle and kotlin, we're going to be using gradle 8.5.2 and kotlin 1.9.23
+      # Due to Expo's incompatibility with ltest gradle and kotlin, we're going to be using gradle 8.4 and kotlin 1.9.23
       - name: 🧱 Upgrade Gradle wrapper
         working-directory: ${{ env.APP_DIR }}
         run: |
-          sed -i 's/gradle-[0-9.]*-bin.zip/gradle-8.5-bin.zip/' android/gradle/wrapper/gradle-wrapper.properties
+          sed -i 's/gradle-[0-9.]*-bin.zip/gradle-8.4-bin.zip/' android/gradle/wrapper/gradle-wrapper.properties
       
-      - name: 🧰 Force Kotlin version compatible with Gradle 8.5 (KTS)
+      - name: 🧰 Force Kotlin version compatible with Gradle 8.4 (KTS)
         working-directory: ${{ env.APP_DIR }}
         run: |
           FILE_PATH="android/build.gradle.kts"
@@ -131,7 +131,7 @@ jobs:
       - name: 🔧 Pin Gradle and Kotlin for Expo CI
         run: |
           cd apps/mobile/datingapp-mobile/android
-          ./gradlew wrapper --gradle-version 8.5
+          ./gradlew wrapper --gradle-version 8.4
           echo "org.jetbrains.kotlin.android=1.9.23" >> gradle.properties
           echo "kotlin.code.style=official" >> gradle.properties
           echo "kotlin_version=1.9.24" >> gradle.properties
