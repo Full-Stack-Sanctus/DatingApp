@@ -101,6 +101,13 @@ jobs:
           keyAlias=${{ secrets.KEY_ALIAS }}
           keyPassword=${{ secrets.KEY_PASSWORD }}
           EOF
+      
+      - name: 🔄 Force-clean Gradle Kotlin DSL caches
+        run: |
+          rm -rf ~/.gradle/caches/*kotlin*
+          rm -rf ~/.gradle/caches/*dsl*
+          rm -rf ~/.gradle/kotlin-dsl
+    
       - name: 🧠 Verify toolchain
         working-directory: ${{ env.APP_DIR }}/android
         run: |
