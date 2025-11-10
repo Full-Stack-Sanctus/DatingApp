@@ -71,27 +71,47 @@ jobs:
         working-directory: ${{ env.APP_DIR }}
         run: |
           yarn up expo@54.0.23 react@18.2.0 react-native@0.74.1 --mode=update-lockfile
-        
-      # 9️⃣Expo prebuild
+
+      # 9️⃣ Expo prebuild
       - name: Expo Prebuild Android
         working-directory: ${{ env.APP_DIR }}
         run: |
           npx expo prebuild --platform android --no-install --clean
 
-      # 🔟  Pin Gradle + Kotlin for Expo CI
+      # 🔟 Pin Gradle + Kotlin for project and plugins
       - name: Pin Gradle & Kotlin
         working-directory: ${{ env.APP_DIR }}/android
         run: |
-          # Gradle wrapper
           ./gradlew wrapper --gradle-version 8.1.1
-          # Gradle properties
           echo "kotlin.code.style=official" >> gradle.properties
           echo "kotlinVersion=1.8.22" >> gradle.properties
           echo "androidGradlePluginVersion=8.0.2" >> gradle.properties
           echo "org.gradle.kotlin.dsl.provider.compiler.kotlinc.version=1.8.22" >> gradle.properties
           echo "org.gradle.kotlin.dsl.provider.reset=true" >> gradle.properties
 
-      # 1️⃣1️⃣ Restore Android keystore
+      # 1️⃣1️⃣ Force-clean Gradle and Kotlin DSL caches
+      - name: Clean Gradle & Kotlin DSL caches
+        run: |
+          rm -rf ~/.gradle/caches
+          rm -rf ~/.gradle/kotlin-dsl
+          rm -rf ${{ env.APP_DIR }}/android/.gradle
+          rm -rf ${{ env.APP_DIR }}/android/build
+
+      # 1️⃣2️⃣ Force Kotlin version for all plugins (including node_modules)
+      - name: Force Kotlin for all plugins
+        working-directory: ${{ env.APP_DIR }}/android
+        run: |
+          echo 'pluginManagement {
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.id.startsWith("org.jetbrains.kotlin")) {
+                useModule("org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.22")
+            }
+        }
+    }
+}' >> settings.gradle.kts
+
+      # 1️⃣3️⃣ Restore Android keystore
       - name: Restore Keystore
         working-directory: ${{ env.APP_DIR }}/android
         run: |
@@ -102,28 +122,23 @@ jobs:
           keyAlias=${{ secrets.KEY_ALIAS }}
           keyPassword=${{ secrets.KEY_PASSWORD }}
           EOF
-      
-      - name: 🔄 Force-clean Gradle Kotlin DSL caches
-        run: |
-          rm -rf ~/.gradle/caches/*kotlin*
-          rm -rf ~/.gradle/caches/*dsl*
-          rm -rf ~/.gradle/kotlin-dsl
-    
-      - name: 🧠 Verify toolchain
+
+      # 1️⃣4️⃣ Verify toolchain
+      - name: Verify toolchain
         working-directory: ${{ env.APP_DIR }}/android
         run: |
           ./gradlew -v
           grep kotlinVersion gradle.properties || true
           java -version
 
-      # 1️⃣2️⃣ Build APK
+      # 1️⃣5️⃣ Build APK
       - name: Build APK
         working-directory: ${{ env.APP_DIR }}/android
         run: |
           ./gradlew clean
           ./gradlew assembleRelease --stacktrace
 
-      # 1️⃣3️⃣ Upload APK artifact
+      # 1️⃣6️⃣ Upload APK artifact
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
