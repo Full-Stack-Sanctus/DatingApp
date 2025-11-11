@@ -100,7 +100,7 @@ jobs:
       - name: 🧱 Upgrade Gradle wrapper
         working-directory: ${{ env.APP_DIR }}
         run: |
-          sed -i 's/gradle-[0-9.]*-bin.zip/gradle-7.6.3-bin.zip/' android/gradle/wrapper/gradle-wrapper.properties
+          sed -i 's/gradle-[0-9.]*-bin.zip/gradle-8.1.1-bin.zip/' android/gradle/wrapper/gradle-wrapper.properties
       
       - name: 🧰 Force Kotlin version compatible with Gradle 7.6.3 (KTS)
         working-directory: ${{ env.APP_DIR }}
@@ -111,32 +111,16 @@ jobs:
            sed -i 's/kotlin("jvm") version ".*"/kotlin("jvm") version "1.8.22"/' "$FILE_PATH"
           fi
           
-      - name: 🧩 Check for SettingsManager.kt
-        run: |
-          FILE_PATH="apps/mobile/datingapp-mobile/node_modules/expo-modules-autolinking/android/expo-gradle-plugin/expo-autolinking-settings-plugin/src/main/kotlin/expo/modules/plugin/SettingsManager.kt"
-          if [ -f "$FILE_PATH" ]; then
-            echo "✅ File found at $FILE_PATH"
-            mkdir -p artifact
-            cp "$FILE_PATH" artifact/
-          else
-            echo "❌ File not found at $FILE_PATH"
-          fi
-
-      - name: 📦 Upload SettingsManager artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: SettingsManager
-          path: artifact/
-      
       - name: 🔧 Pin Gradle and Kotlin for Expo CI
         run: |
           cd apps/mobile/datingapp-mobile/android
           ./gradlew clean
-          ./gradlew wrapper --gradle-version 7.6.3
+          ./gradlew wrapper --gradle-version 8.1.1
           echo "org.jetbrains.kotlin.android=1.8.22" >> gradle.properties
           echo "kotlin.code.style=official" >> gradle.properties
-          echo "kotlin_version=1.9.23" >> gradle.properties
-          echo "androidGradlePluginVersion=7.4.0" >> gradle.properties
+          "org.gradle.kotlin.dsl.provider.compiler.kotlinc.version=1.8.22" >> gradle.properties
+          echo "org.gradle.kotlin.dsl.provider.reset=true" >> gradle.properties
+          echo "androidGradlePluginVersion=8.0.2" >> gradle.properties
     
       # 9️⃣ Restore Android keystore
       - name: 🔐 Restore Keystore
