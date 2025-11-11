@@ -82,7 +82,7 @@ jobs:
       - name: Pin Gradle & Kotlin
         working-directory: ${{ env.APP_DIR }}/android
         run: |
-          ./gradlew wrapper --gradle-version 8.1.1
+          ./gradlew wrapper --gradle-version 8.10.2
           echo "kotlin.code.style=official" >> gradle.properties
           echo "kotlinVersion=1.8.22" >> gradle.properties
           echo "androidGradlePluginVersion=8.0.2" >> gradle.properties
