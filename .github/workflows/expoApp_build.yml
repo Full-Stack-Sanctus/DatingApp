@@ -84,7 +84,8 @@ jobs:
         run: |
           ./gradlew wrapper --gradle-version 8.10.2
           
-          sed -i 's|distributionUrl=.*|distributionUrl=https\://services.gradle.org/distributions/gradle-8.1.1-bin.zip|' gradle/wrapper/gradle-wrapper.properties
+        
+          sed -i 's/gradle-[0-9.]*-bin.zip/gradle-7.6.3-bin.zip/' gradle/wrapper/gradle-wrapper.properties
           
           echo "kotlin.code.style=official" >> gradle.properties
           echo "kotlinVersion=1.8.22" >> gradle.properties
