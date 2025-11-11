@@ -118,7 +118,7 @@ jobs:
           ./gradlew wrapper --gradle-version 8.10.2
           echo "org.jetbrains.kotlin.android=1.8.22" >> gradle.properties
           echo "kotlin.code.style=official" >> gradle.properties
-          "org.gradle.kotlin.dsl.provider.compiler.kotlinc.version=1.8.22" >> gradle.properties
+          echo "org.gradle.kotlin.dsl.provider.compiler.kotlinc.version=1.8.22" >> gradle.properties
           echo "org.gradle.kotlin.dsl.provider.reset=true" >> gradle.properties
           echo "androidGradlePluginVersion=8.0.2" >> gradle.properties
     
