@@ -1,4 +1,4 @@
-name: Build Expo Android APK (Stable)
+name: Build Expo Android APK (Local)
 
 on:
   push:
@@ -14,18 +14,18 @@ jobs:
       CI: 1
 
     steps:
-      # 1️⃣ Checkout repository
-      - name: Checkout repository
+      # 1️⃣ Checkout the repository
+      - name: 🛎️ Checkout repository
         uses: actions/checkout@v4
 
       # 2️⃣ Setup Node.js
-      - name: Setup Node.js
+      - name: ⚙️ Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20.19.5
 
-      # 3️⃣ Enable Yarn Berry
-      - name: Setup Yarn
+      # 3️⃣ Enable Yarn (Classic 1.22.22 for maximum Expo compatibility)
+      - name: 🧶 Set up Yarn Berry
         run: |
           corepack enable
           corepack prepare yarn@stable --activate
@@ -42,14 +42,30 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
-
-      # 5️⃣ Install dependencies
-      - name: Install dependencies
+      
+      - name: 🔍 Check Yarn workspaces
         run: |
-          yarn install --immutable || yarn install
+          yarn cache clean
+          yarn workspaces list
 
-      # 6️⃣ Setup Java 17
-      - name: Setup Java
+      # 5️⃣ Install dependencies (root)
+      - name: 📦 Install dependencies (safe flexible)
+        run: |
+          if [ -f yarn.lock ]; then
+            yarn install --immutable
+          else
+            yarn install
+          fi
+
+      # Add root node_modules/.bin to PATH
+      - name: ➕ Add Node bin to PATH
+        run: |
+          echo "${{ github.workspace }}/node_modules/.bin" >> $GITHUB_PATH
+          echo "$(which node)"  # Debug check
+          node -v
+
+      # 6️⃣ Setup Java & Gradle
+      - name: ☕ Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -65,58 +81,65 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/android/build.gradle') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
-
-      # 8️⃣ Ensure Expo SDK versions
-      - name: Update Expo dependencies
+      
+      - name: 🧩 Ensure Expo is available for build
         working-directory: ${{ env.APP_DIR }}
         run: |
+          echo "📦 Installing Expo SDK for Yarn Berry"
           yarn up expo@54.0.23 react@18.2.0 react-native@0.74.1 --mode=update-lockfile
-
-      # 9️⃣ Expo prebuild
-      - name: Expo Prebuild Android
+    
+      # 8️⃣ Expo Prebuild Android
+      - name: 📱 Expo Prebuild Android
         working-directory: ${{ env.APP_DIR }}
         run: |
+          export CI=1
           npx expo prebuild --platform android --no-install --clean
-
-      # 🔟 Pin Gradle + Kotlin for project and plugins
-      - name: Pin Gradle & Kotlin
-        working-directory: ${{ env.APP_DIR }}/android
+          yarn android:prebuild || true
+      
+      # Due to Expo's incompatibility with ltest gradle and kotlin, we're going to be using gradle 7.6.3 and kotlin 1.8.22
+      - name: 🧱 Upgrade Gradle wrapper
+        working-directory: ${{ env.APP_DIR }}
         run: |
-          ./gradlew wrapper --gradle-version 8.10.2
+          sed -i 's/gradle-[0-9.]*-bin.zip/gradle-7.6.3-bin.zip/' android/gradle/wrapper/gradle-wrapper.properties
+      
+      - name: 🧰 Force Kotlin version compatible with Gradle 7.6.3 (KTS)
+        working-directory: ${{ env.APP_DIR }}
+        run: |
+          FILE_PATH="android/build.gradle.kts"
+          if [ -f "$FILE_PATH" ]; then
+           echo "Updating Kotlin version in $FILE_PATH..."
+           sed -i 's/kotlin("jvm") version ".*"/kotlin("jvm") version "1.8.22"/' "$FILE_PATH"
+          fi
           
-        
-          sed -i 's/gradle-[0-9.]*-bin.zip/gradle-7.6.3-bin.zip/' gradle/wrapper/gradle-wrapper.properties
-          
+      - name: 🧩 Check for SettingsManager.kt
+        run: |
+          FILE_PATH="apps/mobile/datingapp-mobile/node_modules/expo-modules-autolinking/android/expo-gradle-plugin/expo-autolinking-settings-plugin/src/main/kotlin/expo/modules/plugin/SettingsManager.kt"
+          if [ -f "$FILE_PATH" ]; then
+            echo "✅ File found at $FILE_PATH"
+            mkdir -p artifact
+            cp "$FILE_PATH" artifact/
+          else
+            echo "❌ File not found at $FILE_PATH"
+          fi
+
+      - name: 📦 Upload SettingsManager artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: SettingsManager
+          path: artifact/
+      
+      - name: 🔧 Pin Gradle and Kotlin for Expo CI
+        run: |
+          cd apps/mobile/datingapp-mobile/android
+          ./gradlew clean
+          ./gradlew wrapper --gradle-version 7.6.3
+          echo "org.jetbrains.kotlin.android=1.8.22" >> gradle.properties
           echo "kotlin.code.style=official" >> gradle.properties
-          echo "kotlinVersion=1.8.22" >> gradle.properties
-          echo "androidGradlePluginVersion=8.0.2" >> gradle.properties
-          echo "org.gradle.kotlin.dsl.provider.compiler.kotlinc.version=1.8.22" >> gradle.properties
-          echo "org.gradle.kotlin.dsl.provider.reset=true" >> gradle.properties
-
-      # 1️⃣1️⃣ Force-clean Gradle and Kotlin DSL caches
-      - name: Clean Gradle & Kotlin DSL caches
-        run: |
-          rm -rf ~/.gradle/caches
-          rm -rf ~/.gradle/kotlin-dsl
-          rm -rf ${{ env.APP_DIR }}/android/.gradle
-          rm -rf ${{ env.APP_DIR }}/android/build
-
-      # 1️⃣2️⃣ Force Kotlin version for all plugins (including node_modules)
-      - name: Force Kotlin for all plugins
-        working-directory: ${{ env.APP_DIR }}/android
-        run: |
-          echo 'pluginManagement {
-                   resolutionStrategy {
-                      eachPlugin {
-                        if (requested.id.id.startsWith("org.jetbrains.kotlin")) {
-                          useModule("org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.22")
-                        }
-                      }
-                    }
-                }' >> settings.gradle.kts
-
-      # 1️⃣3️⃣ Restore Android keystore
-      - name: Restore Keystore
+          echo "kotlin_version=1.9.23" >> gradle.properties
+          echo "androidGradlePluginVersion=7.4.0" >> gradle.properties
+    
+      # 9️⃣ Restore Android keystore
+      - name: 🔐 Restore Keystore
         working-directory: ${{ env.APP_DIR }}/android
         run: |
           echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > keystore.jks
@@ -127,23 +150,15 @@ jobs:
           keyPassword=${{ secrets.KEY_PASSWORD }}
           EOF
 
-      # 1️⃣4️⃣ Verify toolchain
-      - name: Verify toolchain
-        working-directory: ${{ env.APP_DIR }}/android
-        run: |
-          ./gradlew -v
-          grep kotlinVersion gradle.properties || true
-          java -version
-
-      # 1️⃣5️⃣ Build APK
-      - name: Build APK
+      # 🔟 Build Release APK
+      - name: 🏗️ Build APK
         working-directory: ${{ env.APP_DIR }}/android
         run: |
           ./gradlew clean
           ./gradlew assembleRelease --stacktrace
 
-      # 1️⃣6️⃣ Upload APK artifact
-      - name: Upload APK
+      # 1️⃣1️⃣ Upload APK as artifact
+      - name: 📦 Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: app-release
