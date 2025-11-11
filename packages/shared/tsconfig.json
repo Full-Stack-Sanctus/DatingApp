@@ -1,9 +1,14 @@
 {
-  "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
     "jsx": "react-jsx",
-    "jsxImportSource": "react",
-    "types": ["react", "react-native"]
+    "declaration": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "moduleResolution": "NodeNext",
+    "rootDir": "./",
+    "outDir": "dist"
   },
-  "include": ["components/**/*", "*.ts", "*.tsx"]
+  "include": ["index.tsx", "components/**/*"]
 }

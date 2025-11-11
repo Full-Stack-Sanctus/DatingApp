@@ -1,9 +1,21 @@
-// apps/mobile/datingapp-mobile/metro.config.js
-import { getDefaultConfig } from 'expo/metro-config';
+const { getDefaultConfig } = require('expo/metro-config');
+const path = require('path');
 
-const config = getDefaultConfig(__dirname);
+const projectRoot = __dirname;
+const monorepoRoot = path.resolve(__dirname, '../../../');
 
-// Optional: helpful log for CI
-console.warn('🚀 Using Expo automatic Metro config for monorepos (SDK52+)');
+const config = getDefaultConfig(projectRoot);
 
-export default config;
+// 👀 Watch shared package for changes
+config.watchFolders = [path.resolve(monorepoRoot, 'packages/shared')];
+
+// 🔍 Ensure Metro resolves "shared" properly
+config.resolver.nodeModulesPaths = [
+  path.resolve(monorepoRoot, 'node_modules'),
+  path.resolve(projectRoot, 'node_modules'),
+];
+
+// 🧩 Add extensions to ensure .tsx files compile correctly
+config.resolver.sourceExts = [...config.resolver.sourceExts, 'cjs', 'ts', 'tsx'];
+
+module.exports = config;

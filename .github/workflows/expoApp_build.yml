@@ -56,7 +56,12 @@ jobs:
           else
             yarn install
           fi
-
+      
+      # 🧱 Build shared workspace before building app
+      - name: 🏗️ Build shared workspace
+        run: |
+          yarn workspace shared build
+    
       # Add root node_modules/.bin to PATH
       - name: ➕ Add Node bin to PATH
         run: |

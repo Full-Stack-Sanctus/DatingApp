@@ -1,16 +1,9 @@
-{ 
-  "extends": "expo/tsconfig.base",
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ],
+{
+  "extends": "../../../tsconfig.json",
   "compilerOptions": {
-    "jsx": "react-jsx",
-    "baseUrl": ".",
-    "types": ["node"],
+    "baseUrl": "./src",
     "paths": {
-      "shared/*": ["../../packages/shared/*"]
+      "shared": ["../../../packages/shared"]
     }
   }
 }
