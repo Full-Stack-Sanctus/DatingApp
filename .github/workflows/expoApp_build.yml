@@ -87,12 +87,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
       
-      - name: Clean Gradle caches
-        run: |
-          echo "Deleting Gradle caches..."
-          rm -rf ~/.gradle/caches
-          rm -rf ~/.gradle/daemon
-          rm -rf ~/.gradle/native
+      - - name: Clean native caches
+          run: |
+            rm -rf android/app/build
+            rm -rf android/app/.cxx
+            rm -rf node_modules/expo-modules-core/android/.cxx
+            rm -rf ~/.gradle/caches
       
       - name: Install Android build tools
         run: |
