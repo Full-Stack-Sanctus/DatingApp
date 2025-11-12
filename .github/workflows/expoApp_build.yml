@@ -97,7 +97,6 @@ jobs:
       - name: Remove Android build artifacts
         working-directory: ${{ env.APP_DIR }}/android
         run: |
-          rm -rf app/build
           rm -rf ../node_modules/expo-modules-core/android/.cxx
     
       - name: 🧩 Ensure Expo is available for build
