@@ -12,9 +12,6 @@ jobs:
     env:
       APP_DIR: apps/mobile/datingapp-mobile
       CI: 1
-      ANDROID_NDK_HOME: /usr/local/lib/android/sdk/ndk/26.1.10909125
-      ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
-      PATH: /usr/local/lib/android/sdk/cmake/3.22.1/bin:/usr/local/lib/android/sdk/ndk/26.1.10909125:$PATH
 
     steps:
       # 1️⃣ Checkout the repository
