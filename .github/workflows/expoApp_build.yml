@@ -87,7 +87,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
       
-      - - name: Clean native caches
+        - name: Clean native caches
           run: |
             rm -rf android/app/build
             rm -rf android/app/.cxx
