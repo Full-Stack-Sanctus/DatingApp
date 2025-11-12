@@ -91,8 +91,6 @@ jobs:
         working-directory: ${{ env.APP_DIR }}/android
         run: |
           rm -rf ~/.gradle/caches
-          rm -rf ~/.gradle/native
-          rm -rf ~/.gradle/caches
           rm -rf ~/.gradle/daemon
           rm -rf ~/.gradle/native
           rm -rf app/.cxx
