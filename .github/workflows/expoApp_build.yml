@@ -90,7 +90,7 @@ jobs:
       - name: 🧽 Clean Gradle Native Builds
         working-directory: ${{ env.APP_DIR }}/android
         run: |
-          rm -rf ~/.gradle/caches/build-cache*
+          rm -rf ~/.gradle/caches
           rm -rf ~/.gradle/native
           rm -rf ~/.gradle/caches
           rm -rf ~/.gradle/daemon
