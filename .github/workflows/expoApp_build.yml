@@ -118,6 +118,13 @@ jobs:
           yes | sdkmanager --licenses || true
           sdkmanager --install "cmake;3.22.1" "ndk;26.1.10909125"
           echo "✅ Installed NDK and CMake"
+      
+      - name: 🧽 Clean Gradle Native Builds
+        working-directory: ${{ env.APP_DIR }}/android
+        run: |
+          ./gradlew clean
+          rm -rf ~/.gradle/caches/build-cache*
+          rm -rf ~/.gradle/native
           
       # Due to Expo's incompatibility with ltest gradle and kotlin, we're going to be using gradle 7.6.3 and kotlin 1.8.22
       - name: 🧱 Upgrade Gradle wrapper
