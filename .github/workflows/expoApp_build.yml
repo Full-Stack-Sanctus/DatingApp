@@ -98,9 +98,17 @@ jobs:
         working-directory: ${{ env.APP_DIR }}
         run: |
           export CI=1
-          npx expo prebuild --platform android --no-install --clean
+          npx expo prebuild --platform android --no-install --clean --output-dir dist
           yarn android:prebuild || true
       
+      # 🧾 Upload MainActivity.java for inspection
+      - name: 📤 Upload MainActivity.java artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: MainActivity
+          path: ${{ env.APP_DIR }}/android/app/src/main/java/com/example/datingapp/MainActivity.java
+          
+          
       # Due to Expo's incompatibility with ltest gradle and kotlin, we're going to be using gradle 7.6.3 and kotlin 1.8.22
       - name: 🧱 Upgrade Gradle wrapper
         working-directory: ${{ env.APP_DIR }}

@@ -16,6 +16,6 @@ config.resolver.nodeModulesPaths = [
 ];
 
 // 🧩 Add extensions to ensure .tsx files compile correctly
-config.resolver.sourceExts = [...config.resolver.sourceExts, 'cjs', 'ts', 'tsx'];
+config.resolver.sourceExts = [...config.resolver.sourceExts, 'js', 'cjs', 'ts', 'tsx'];
 
 module.exports = config;
