@@ -98,7 +98,7 @@ jobs:
         working-directory: ${{ env.APP_DIR }}
         run: |
           export CI=1
-          npx expo prebuild --platform android --output-dir dist --no-install --clean
+          npx expo prebuild --platform android --no-install --clean
           yarn android:prebuild || true
       
       # 🧾 Upload MainActivity.java for inspection
