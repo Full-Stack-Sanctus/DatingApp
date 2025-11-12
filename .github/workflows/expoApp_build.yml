@@ -94,10 +94,10 @@ jobs:
           rm -rf ~/.gradle/daemon
           rm -rf ~/.gradle/native
       
-      - name: Remove Android build artifacts
-        working-directory: ${{ env.APP_DIR }}/android
+      - name: Install Android build tools
         run: |
-          rm -rf ../node_modules/expo-modules-core/android/.cxx
+          sudo apt-get update
+          sudo apt-get install -y ninja-build
     
       - name: 🧩 Ensure Expo is available for build
         working-directory: ${{ env.APP_DIR }}
