@@ -12,6 +12,9 @@ jobs:
     env:
       APP_DIR: apps/mobile/datingapp-mobile
       CI: 1
+      ANDROID_NDK_HOME: /usr/local/lib/android/sdk/ndk/26.1.10909125
+      ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+      PATH: /usr/local/lib/android/sdk/cmake/3.22.1/bin:/usr/local/lib/android/sdk/ndk/26.1.10909125:$PATH
 
     steps:
       # 1️⃣ Checkout the repository
@@ -100,7 +103,22 @@ jobs:
           export CI=1
           npx expo prebuild --platform android --no-install --clean
           yarn android:prebuild || true
-  
+      
+      # 🧾 Upload MainActivity.java for inspection
+      - name: 📤 Upload MainActivity.java artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: MainActivity
+          path: ${{ env.APP_DIR }}/android/app/src/main/java/com/example/datingapp/MainActivity.java
+      
+        - name: 🧰 Install Android NDK and CMake
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ninja-build
+          yes | sdkmanager --licenses || true
+          sdkmanager --install "cmake;3.22.1" "ndk;26.1.10909125"
+          echo "✅ Installed NDK and CMake"
+          
       # Due to Expo's incompatibility with ltest gradle and kotlin, we're going to be using gradle 7.6.3 and kotlin 1.8.22
       - name: 🧱 Upgrade Gradle wrapper
         working-directory: ${{ env.APP_DIR }}
