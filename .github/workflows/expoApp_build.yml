@@ -108,14 +108,6 @@ jobs:
           name: MainActivity
           path: ${{ env.APP_DIR }}/android/app/src/main/java/com/example/datingapp/MainActivity.java
       
-      - name: 🧰 Install Android NDK and CMake
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y ninja-build
-          yes | sdkmanager --licenses || true
-          sdkmanager --install "cmake;3.22.1" "ndk;26.1.10909125"
-          echo "✅ Installed NDK and CMake"
-      
       - name: 🧽 Clean Gradle Native Builds
         working-directory: ${{ env.APP_DIR }}/android
         run: |
