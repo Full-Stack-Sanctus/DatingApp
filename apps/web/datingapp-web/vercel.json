@@ -9,11 +9,7 @@
   "env": {
     "NODE_ENV": "production"
   },
-  "buildCommand": "ls && npm install && npm run build",
-  "outputDirectory": "dist"
-}
-
-{
   "buildCommand": "yarn workspaces run build && yarn workspace datingapp-web build",
-  "installCommand": "yarn install --frozen-lockfile"
+  "installCommand": "yarn install --frozen-lockfile",
+  "outputDirectory": "dist"
 }
