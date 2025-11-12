@@ -94,11 +94,6 @@ jobs:
           rm -rf node_modules/expo-modules-core/android/.cxx
           rm -rf ~/.gradle/caches
       
-      - name: Install Android build tools
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y ninja-build
-    
       - name: 🧩 Ensure Expo is available for build
         working-directory: ${{ env.APP_DIR }}
         run: |
