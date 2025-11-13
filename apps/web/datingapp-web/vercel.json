@@ -11,5 +11,7 @@
   },
   "buildCommand": "yarn workspaces run build && yarn workspace datingapp-web build",
   "installCommand": "yarn install --frozen-lockfile",
-  "outputDirectory": "dist"
+  "outputDirectory": "apps/web/datingapp-web/dist",
+  "framework": "vite",
+  "rootDir": "apps/web/datingapp-web"
 }
