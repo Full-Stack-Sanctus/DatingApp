@@ -9,7 +9,7 @@
   "env": {
     "NODE_ENV": "production"
   },
-  "buildCommand": "yarn workspaces run build && yarn workspace datingapp-web build",
+  "buildCommand": "yarn workspaces run build && yarn workspace datingapp-web build && ls",
   "installCommand": "yarn install --frozen-lockfile",
   "outputDirectory": "dist",
   "framework": "vite"
