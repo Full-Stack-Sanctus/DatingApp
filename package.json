@@ -11,6 +11,13 @@
     "build:mobile": "yarn workspace datingapp-mobile build",
     "build:web": "yarn workspace datingapp-web build"
   },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "dependencies": {
     "expo": "^54.0.23",
     "react-native-web": "^0.21.2"
