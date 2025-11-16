@@ -1,15 +1,21 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "module": "NodeNext",
+    "module": "ESNext",
     "jsx": "react-jsx",
+
     "declaration": true,
+    "declarationDir": "dist",
+
+    "moduleResolution": "Bundler",
+
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "moduleResolution": "NodeNext",
-    "rootDir": "./",
-    "outDir": "dist"
+
+    "outDir": "dist",
+    "rootDir": "./"
   },
+
   "include": ["index.tsx", "components/**/*"],
   "exclude": ["dist", "node_modules"]
 }
