@@ -105,7 +105,14 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    minHeight: "100vh", // Required for web
     width: "100%",
+    height: Platform.select({
+      web: "100vh",
+      default: "100%", // for Expo mobile
+    }),
+    minHeight: Platform.select({
+      web: "100vh",
+      default: "100%",
+    }),
   },
 });
