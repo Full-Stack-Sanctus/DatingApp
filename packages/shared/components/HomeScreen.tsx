@@ -9,15 +9,19 @@ import {
   Dimensions,
 } from 'react-native';
 
-const { height: windowHeight } = Dimensions.get('window');
+const { height: windowHeight, width: windowWidth } = Dimensions.get('window');
 
 export default function HomeScreen() {
+  // Use a number for height, works for both web and mobile
+  const backgroundHeight =
+    Platform.OS === 'web' ? windowHeight : windowHeight;
+
   return (
     <ImageBackground
       source={{
         uri: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=1000&q=80',
       }}
-      style={styles.background}
+      style={[styles.background, { height: backgroundHeight }]}
       resizeMode="cover"
     >
       {/* Header */}
@@ -49,10 +53,6 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   background: {
     width: '100%',
-    minHeight: Platform.select({
-      web: '100vh', // full viewport on web
-      default: windowHeight, // mobile height
-    }),
     flex: 1,
     justifyContent: 'space-between',
     backgroundColor: '#f8f8f8',
