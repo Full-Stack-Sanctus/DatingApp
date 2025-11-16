@@ -1,5 +1,15 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, ImageBackground, StyleSheet, Platform } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  ImageBackground,
+  StyleSheet,
+  Platform,
+  Dimensions,
+} from 'react-native';
+
+const { height: windowHeight } = Dimensions.get('window');
 
 export default function HomeScreen() {
   return (
@@ -38,11 +48,14 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   background: {
+    width: '100%',
+    minHeight: Platform.select({
+      web: '100vh', // full viewport on web
+      default: windowHeight, // mobile height
+    }),
     flex: 1,
     justifyContent: 'space-between',
     backgroundColor: '#f8f8f8',
-    width: "100%",
-    height: "100%",
   },
   header: {
     width: '100%',
@@ -86,8 +99,8 @@ const styles = StyleSheet.create({
   },
   centerContent: {
     flex: 1,
+    justifyContent: 'center', // vertical centering
     alignItems: 'center',
-    justifyContent: 'center',
     paddingHorizontal: 20,
     marginBottom: 100,
   },
@@ -102,17 +115,5 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#f1f1f1',
     textAlign: 'center',
-  },
-  container: {
-    flex: 1,
-    width: "100%",
-    height: Platform.select({
-      web: "100vh",
-      default: "100%", // for Expo mobile
-    }),
-    minHeight: Platform.select({
-      web: "100vh",
-      default: "100%",
-    }),
   },
 });
