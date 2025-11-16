@@ -41,6 +41,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between',
     backgroundColor: '#f8f8f8',
+    width: "100%",
+    height: "100%",
   },
   header: {
     width: '100%',
@@ -100,5 +102,10 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#f1f1f1',
     textAlign: 'center',
+  },
+  container: {
+    flex: 1,
+    minHeight: "100vh", // Required for web
+    width: "100%",
   },
 });
