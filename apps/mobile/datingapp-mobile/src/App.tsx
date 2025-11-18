@@ -3,7 +3,7 @@
 //import viteLogo from '/vite.svg'
 import './App.css'
 
-import bg from '../assets/images/HomeScreenBackgroundImage.jpeg';
+import bg from './assets/images/HomeScreenBackgroundImage.jpeg';
 
 //import { HomeScreen } from 'shared/components';
 import { HomeScreen } from 'shared';
