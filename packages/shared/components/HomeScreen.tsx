@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import bgImage from '../../assets/images/HomeScreenBackgroundImage.jpeg';
 import {
   View,
   Text,
@@ -26,9 +27,7 @@ export default function HomeScreen() {
 
   return (
     <ImageBackground
-      source={{
-        uri: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=1000&q=80',
-      }}
+      source={bgImage}
       style={[styles.background, { minHeight: screenHeight }]} // <-- NUMBER ONLY ✔
       resizeMode="cover"
     >
