@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import bgImage from '../assets/images/HomeScreenBackgroundImage.jpeg';
+
 import {
   View,
   Text,
