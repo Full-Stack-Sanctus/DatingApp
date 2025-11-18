@@ -9,19 +9,20 @@ import {
   Dimensions,
 } from 'react-native';
 
-const { height: windowHeight, width: windowWidth } = Dimensions.get('window');
-
 export default function HomeScreen() {
-  // Use a number for height, works for both web and mobile
-  const backgroundHeight =
-    Platform.OS === 'web' ? windowHeight : windowHeight;
+  const isWeb = Platform.OS === "web";
 
   return (
     <ImageBackground
       source={{
         uri: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=1000&q=80',
       }}
-      style={[styles.background, { height: backgroundHeight }]}
+      style={[
+        styles.background,
+        isWeb
+          ? { minHeight: '100vh' }       // Full browser height
+          : { minHeight: '100%' },       // Full device height
+      ]}
       resizeMode="cover"
     >
       {/* Header */}
@@ -41,7 +42,7 @@ export default function HomeScreen() {
       <View style={styles.centerContent}>
         <Text style={styles.welcomeText}>Welcome to Empire Date 💞</Text>
         <Text style={styles.subText}>
-          {Platform.OS === 'web'
+          {isWeb
             ? 'Find your perfect match on the web.'
             : 'Meet amazing people on mobile.'}
         </Text>
@@ -55,7 +56,6 @@ const styles = StyleSheet.create({
     width: '100%',
     flex: 1,
     justifyContent: 'space-between',
-    backgroundColor: '#f8f8f8',
   },
   header: {
     width: '100%',
@@ -99,10 +99,9 @@ const styles = StyleSheet.create({
   },
   centerContent: {
     flex: 1,
-    justifyContent: 'center', // vertical centering
+    justifyContent: 'center', 
     alignItems: 'center',
     paddingHorizontal: 20,
-    marginBottom: 100,
   },
   welcomeText: {
     fontSize: 32,
