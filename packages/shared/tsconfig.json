@@ -16,6 +16,6 @@
     "rootDir": "./"
   },
 
-  "include": ["index.tsx", "components/**/*", "assets", "declarations.d.ts"],
+  "include": ["index.tsx", "components/**/*"],
   "exclude": ["dist", "node_modules"]
 }

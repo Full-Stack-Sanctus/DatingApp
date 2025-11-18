@@ -10,7 +10,7 @@ import {
   Dimensions,
 } from 'react-native';
 
-export default function HomeScreen() {
+export default function HomeScreen({ background }: { background: any }) {
   const [screenHeight, setScreenHeight] = useState(
     Dimensions.get("window").height
   );
@@ -27,7 +27,7 @@ export default function HomeScreen() {
 
   return (
     <ImageBackground
-      source={bgImage}
+      source={background}
       style={[styles.background, { minHeight: screenHeight }]} // <-- NUMBER ONLY ✔
       resizeMode="cover"
     >

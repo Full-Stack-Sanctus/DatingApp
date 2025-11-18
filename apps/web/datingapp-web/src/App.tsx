@@ -3,11 +3,13 @@
 //import viteLogo from '/vite.svg'
 import './App.css'
 
+const bg = "/HomeScreenBackgroundImage.jpeg";
+
 import { HomeScreen } from 'shared';
 
 
 function App() {
-  return <HomeScreen />;
+  return <HomeScreen background={{ uri: bg }} />;
 }
 
 export default App;
